@@ -6,23 +6,32 @@ import requests
 logger = logging.getLogger(__name__)
 
 SEARCH_QUERIES = [
-    "small business grants minority-owned 2025 Arizona",
-    "SBA grants minority-owned business Arizona 2025",
-    "women-owned small business grants Arizona 2025",
-    "HUBZone grants small business 2025 federal",
-    "minority business enterprise grant opportunity 2025",
-    "MBDA grants minority business development 2025",
-    "women-owned business federal grants 2025",
-    "8(a) program grants minority small business 2025",
-    "WOSB grants women-owned small business federal 2025",
-    "Arizona Commerce Authority small business grants 2025",
-    "Maricopa County small business grant program 2025",
-    "Glendale Arizona business grant opportunity 2025",
-    "USDA rural business development grant minority 2025",
-    "EDA economic development grant minority-owned 2025",
-    "community development grant minority business 2025",
-    "HUD grant minority business enterprise 2025",
-    "DOT disadvantaged business enterprise grant 2025",
+    # Arizona-specific
+    "small business grant Arizona minority-owned women-owned 2026 apply now",
+    "Arizona Commerce Authority grant program 2026 small business",
+    "Maricopa County small business grant 2026 open application",
+    "Glendale Arizona business grant 2026",
+    "City of Phoenix small business grant 2026 minority women",
+    "Arizona Community Foundation grant small business 2026",
+    "Arizona SBDC grant funding opportunity 2026",
+
+    # Federal programs open now
+    "SBA 8(a) program application open 2026 minority-owned",
+    "WOSB women-owned small business federal contract set-aside 2026",
+    "HUBZone certification benefit federal contract 2026 apply",
+    "MBDA business center grant application 2026",
+    "SBA Community Advantage grant 2026 minority small business",
+    "EDA Build to Scale grant 2026 application open",
+    "USDA RBDG rural business development grant 2026 apply",
+    "DOT DBE disadvantaged business enterprise grant 2026 open",
+
+    # Corporate and foundation grants open now
+    "corporate foundation grant minority women-owned small business 2026 apply",
+    "Comcast RISE grant 2026 minority women-owned business",
+    "FedEx small business grant 2026 apply",
+    "Goldman Sachs 10000 Small Businesses grant 2026 Arizona",
+    "Visa Practical Business Skills grant minority-owned 2026",
+]
     "NSF small business innovation grant minority 2025",
     "EPA environmental justice grant minority business 2025",
     "corporate foundation grant minority women-owned business 2025",
