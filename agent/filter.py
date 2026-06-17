@@ -41,7 +41,7 @@ def run(raw_results: list[dict]) -> list[dict]:
         return []
 
     client = anthropic.Anthropic()
-    user_message = json.dumps(raw_results, ensure_ascii=False)
+    user_message = json.dumps(raw_results, ensure_ascii=True)
 
     try:
         response = client.messages.create(
