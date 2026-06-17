@@ -2,29 +2,13 @@ import json
 import logging
 import os
 import re
+import requests
 import traceback
-import anthropic
-import httpx._models as _httpx_models
 
 logger = logging.getLogger(__name__)
 
-# The GitHub Actions Ubuntu runner includes U+2028 (LINE SEPARATOR) in its
-# platform version string, which lands in the Anthropic SDK's x-stainless-*
-# headers. Older httpx encodes header values as ASCII and raises
-# UnicodeEncodeError. Patch it here to fall back to UTF-8 instead of crashing.
-_orig_normalize = _httpx_models._normalize_header_value
-
-
-def _safe_normalize_header_value(value, encoding):
-    if isinstance(value, str):
-        try:
-            return value.encode(encoding or "ascii")
-        except (UnicodeEncodeError, LookupError):
-            return value.encode("utf-8")
-    return _orig_normalize(value, encoding)
-
-
-_httpx_models._normalize_header_value = _safe_normalize_header_value
+ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
 SYSTEM_PROMPT = """You are a grant research assistant specializing in identifying funding opportunities for small businesses.
 Your client is Inward2Onward LLC, a minority-owned, women-owned small business located in Glendale, Arizona that also qualifies for HUBZone certification.
@@ -84,29 +68,27 @@ def _strip_fences(text: str) -> str:
     return text.strip()
 
 
-def _make_client() -> anthropic.Anthropic:
-    """Build Anthropic client with API key sanitized of invisible Unicode characters."""
-    raw_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    clean_key = raw_key.encode("ascii", errors="ignore").decode("ascii").strip()
-    if len(clean_key) != len(raw_key):
-        logger.warning(
-            "filter: ANTHROPIC_API_KEY contained %d non-ASCII/whitespace character(s) "
-            "that were stripped (original len=%d, clean len=%d) - "
-            "re-copy the key from console.anthropic.com and reset the secret",
-            len(raw_key) - len(clean_key), len(raw_key), len(clean_key),
-        )
-    return anthropic.Anthropic(api_key=clean_key)
-
-
-def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
-    user_message = json.dumps(batch, ensure_ascii=True)
-    response = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=4096,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_message}],
+def _call_claude(api_key: str, batch: list[dict]) -> list[dict]:
+    """Call the Anthropic API directly via requests, avoiding the SDK's
+    platform-detection headers which can contain U+2028 on some Linux runners."""
+    payload = {
+        "model": ANTHROPIC_MODEL,
+        "max_tokens": 4096,
+        "system": SYSTEM_PROMPT,
+        "messages": [{"role": "user", "content": json.dumps(batch, ensure_ascii=True)}],
+    }
+    resp = requests.post(
+        ANTHROPIC_API_URL,
+        headers={
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+        json=payload,
+        timeout=120,
     )
-    content = _strip_fences(response.content[0].text)
+    resp.raise_for_status()
+    content = _strip_fences(resp.json()["content"][0]["text"])
     grants = json.loads(content)
     if not isinstance(grants, list):
         raise ValueError("Expected JSON array, got {}".format(type(grants).__name__))
@@ -117,10 +99,11 @@ def run(raw_results: list[dict]) -> list[dict]:
     if not raw_results:
         return []
 
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+
     cleaned = [_clean(r) for r in raw_results]
     logger.info("filter: cleaned %d results, sending in batches of %d", len(cleaned), BATCH_SIZE)
 
-    client = _make_client()
     all_grants: list[dict] = []
     any_batch_failed = False
 
@@ -128,7 +111,7 @@ def run(raw_results: list[dict]) -> list[dict]:
         batch = cleaned[batch_start : batch_start + BATCH_SIZE]
         batch_num = batch_start // BATCH_SIZE + 1
         try:
-            grants = _call_claude(client, batch)
+            grants = _call_claude(api_key, batch)
             logger.info("filter: batch %d - %d grants passed threshold", batch_num, len(grants))
             all_grants.extend(grants)
         except json.JSONDecodeError as e:
@@ -143,7 +126,6 @@ def run(raw_results: list[dict]) -> list[dict]:
             any_batch_failed = True
 
     if any_batch_failed and not all_grants:
-        # Every batch failed - signal to the caller to use raw fallback
         raise RuntimeError("All Claude filter batches failed - see logs above for details")
 
     logger.info(
