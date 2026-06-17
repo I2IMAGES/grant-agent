@@ -4,8 +4,27 @@ import os
 import re
 import traceback
 import anthropic
+import httpx._models as _httpx_models
 
 logger = logging.getLogger(__name__)
+
+# The GitHub Actions Ubuntu runner includes U+2028 (LINE SEPARATOR) in its
+# platform version string, which lands in the Anthropic SDK's x-stainless-*
+# headers. Older httpx encodes header values as ASCII and raises
+# UnicodeEncodeError. Patch it here to fall back to UTF-8 instead of crashing.
+_orig_normalize = _httpx_models._normalize_header_value
+
+
+def _safe_normalize_header_value(value, encoding):
+    if isinstance(value, str):
+        try:
+            return value.encode(encoding or "ascii")
+        except (UnicodeEncodeError, LookupError):
+            return value.encode("utf-8")
+    return _orig_normalize(value, encoding)
+
+
+_httpx_models._normalize_header_value = _safe_normalize_header_value
 
 SYSTEM_PROMPT = """You are a grant research assistant specializing in identifying funding opportunities for small businesses.
 Your client is Inward2Onward LLC, a minority-owned, women-owned small business located in Glendale, Arizona that also qualifies for HUBZone certification.
