@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inward2Onward Grant Digest</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 24px 16px;
+    }
+    .wrapper { max-width: 680px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      background: #1E293B;
+      border-radius: 12px 12px 0 0;
+      padding: 28px 32px;
+    }
+    .header-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3B82F6;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .header-date {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background: #3B82F6;
+      padding: 12px 32px;
+      display: flex;
+      gap: 24px;
+    }
+    .stat {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Note banner */
+    .note-banner {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 12px 32px;
+      font-size: 13px;
+      color: #92400e;
+    }
+
+    /* Body */
+    .body {
+      background: #ffffff;
+      padding: 32px;
+    }
+
+    /* Section */
+    .section { margin-bottom: 40px; }
+    .section-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3B82F6;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+    .empty-section {
+      font-size: 14px;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    /* Grant card */
+    .grant-card {
+      background: #F8FAFC;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .grant-title a {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1E293B;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .grant-title a:hover { color: #3B82F6; }
+    .grant-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 10px 0;
+    }
+    .meta-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+    .meta-pill.amount { background: #dcfce7; color: #15803d; }
+    .meta-pill.deadline { background: #fef9c3; color: #854d0e; }
+    .grant-summary {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #475569;
+      margin: 12px 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #3B82F6;
+      color: #fff !important;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 6px;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1E293B;
+      border-radius: 0 0 12px 12px;
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+    .footer a { color: #3B82F6; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-brand">Inward2Onward</div>
+    <div class="header-title">Daily Grant Digest</div>
+    <div class="header-date">{{ date }}</div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <span class="stat">{{ grants|length }} new grant{% if grants|length != 1 %}s{% endif %} found</span>
+    {% if sources_checked %}
+    <span class="stat">{{ sources_checked }} sources checked</span>
+    {% endif %}
+  </div>
+
+  {% if note %}
+  <div class="note-banner">⚠ {{ note }}</div>
+  {% endif %}
+
+  <!-- Body -->
+  <div class="body">
+
+    {% for group in eligibility_groups %}
+    <div class="section">
+      <div class="section-heading">{{ group }}</div>
+
+      {% set group_grants = grouped[group] %}
+      {% if group_grants %}
+        {% for grant in group_grants %}
+        <div class="grant-card">
+          <div class="grant-title">
+            <a href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">{{ grant.title }}</a>
+          </div>
+          <div class="grant-meta">
+            {% if grant.amount %}
+            <span class="meta-pill amount">💰 {{ grant.amount }}</span>
+            {% endif %}
+            {% if grant.deadline %}
+            <span class="meta-pill deadline">📅 Deadline: {{ grant.deadline }}</span>
+            {% endif %}
+          </div>
+          {% if grant.summary %}
+          <p class="grant-summary">{{ grant.summary }}</p>
+          {% elif grant.snippet %}
+          <p class="grant-summary">{{ grant.snippet }}</p>
+          {% endif %}
+          <a class="cta-btn" href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">View Grant →</a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p class="empty-section">No new results in this category today.</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      Inward2Onward LLC · Glendale, AZ<br />
+      <a href="tel:6232728066">623.272.8066</a> ·
+      <a href="mailto:ej@inward2onward.com">ej@inward2onward.com</a>
+    </p>
+    <p style="margin-top:8px;font-size:11px;">
+      You are receiving this because you subscribed to the Inward2Onward daily grant digest.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

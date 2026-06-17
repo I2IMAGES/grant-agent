@@ -1,0 +1,6 @@
+anthropic
+supabase
+resend
+requests
+python-dotenv
+jinja2
