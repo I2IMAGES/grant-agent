@@ -99,7 +99,7 @@ def run(raw_results: list[dict]) -> list[dict]:
     if not raw_results:
         return []
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").encode("ascii", errors="ignore").decode("ascii").strip()
 
     cleaned = [_clean(r) for r in raw_results]
     logger.info("filter: cleaned %d results, sending in batches of %d", len(cleaned), BATCH_SIZE)
