@@ -13,11 +13,16 @@ TEMPLATE_DIR = Path(__file__).parent / "templates"
 
 def _group_grants(grants: list[dict]) -> dict[str, list[dict]]:
     groups: dict[str, list[dict]] = {g: [] for g in ELIGIBILITY_GROUPS}
+    seen_urls: set[str] = set()
     for grant in grants:
         tags = grant.get("eligibility", [])
+        url = grant.get("url", "")
         for tag in ELIGIBILITY_GROUPS:
             if tag in tags:
-                groups[tag].append(grant)
+                if url not in seen_urls:
+                    seen_urls.add(url)
+                    groups[tag].append(grant)
+                break
     return groups
 
 

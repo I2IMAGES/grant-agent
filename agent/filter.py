@@ -12,6 +12,7 @@ ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
 SYSTEM_PROMPT = """You are a grant research assistant specializing in identifying funding opportunities for small businesses.
 Your client is Inward2Onward LLC, a minority-owned, women-owned small business located in Glendale, Arizona that also qualifies for HUBZone certification.
+Today's date is June 17, 2026. Any deadline before this date is expired.
 
 You will receive a JSON array of raw search results (each with title, url, snippet). Your job is to:
 
@@ -20,12 +21,13 @@ You will receive a JSON array of raw search results (each with title, url, snipp
    - WOMEN-OWNED: grants for women-owned businesses or WOSBs
    - HUBZONE: grants or preferences for businesses in HUBZone designated areas
 
-2. Filter OUT results that are:
-   - News articles about grants (not actual grant listings)
-   - Expired opportunities (if clearly dated in the past)
-   - Loans disguised as grants
-   - Irrelevant to small business grant funding
-   - Large enterprise or non-profit only grants
+2. HARD REJECT any result matching ANY of these conditions (assign relevance_score 0 and exclude):
+   - Deadline has passed (any date before June 17, 2026)
+   - News article, press release, blog post, or recap about a grant - not an application page
+   - General informational or overview page with no open application (e.g. sba.gov/programs/* description pages)
+   - Loan, line of credit, equity investment, or bond - not a grant or contract set-aside
+   - Restricted to non-profits, universities, governments, or large corporations only
+   - No connection to minority-owned, women-owned, or HUBZone small businesses
 
 3. For each qualifying result, extract or estimate:
    - title: cleaned grant/program name

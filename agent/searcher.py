@@ -6,33 +6,39 @@ import requests
 logger = logging.getLogger(__name__)
 
 SEARCH_QUERIES = [
-    # Arizona-specific
+    # Arizona state and local
     "small business grant Arizona minority-owned women-owned 2026 apply now",
-    "Arizona Commerce Authority grant program 2026 small business",
+    "Arizona Commerce Authority grant program 2026 small business open",
     "Maricopa County small business grant 2026 open application",
-    "Glendale Arizona business grant 2026",
-    "City of Phoenix small business grant 2026 minority women",
-    "Arizona Community Foundation grant small business 2026",
-    "Arizona SBDC grant funding opportunity 2026",
+    "City of Glendale Arizona business grant 2026",
+    "City of Phoenix small business grant 2026 minority women apply",
+    "Mesa Tempe Scottsdale Chandler small business grant 2026",
+    "Arizona Community Foundation grant small business 2026 apply",
+    "Arizona SBDC grant funding opportunity 2026 open",
+    "Arizona Office of Economic Opportunity grant minority business 2026",
+
+    # PTAC - Procurement Technical Assistance
+    "Arizona PTAC procurement technical assistance minority women HUBZone 2026",
+    "APTAC small business federal contracting help minority women-owned 2026",
 
     # Federal programs open now
-    "SBA 8(a) program application open 2026 minority-owned",
-    "WOSB women-owned small business federal contract set-aside 2026",
-    "HUBZone certification benefit federal contract 2026 apply",
-    "MBDA business center grant application 2026",
-    "SBA Community Advantage grant 2026 minority small business",
-    "EDA Build to Scale grant 2026 application open",
-    "USDA RBDG rural business development grant 2026 apply",
-    "DOT DBE disadvantaged business enterprise grant 2026 open",
+    "SBA 8(a) certification apply 2026 minority-owned socially disadvantaged",
+    "WOSB EDWOSB women-owned small business certification 2026 apply",
+    "HUBZone certified small business federal contract 2026 open solicitation",
+    "MBDA business center grant application 2026 minority entrepreneur",
+    "EDA Build to Scale grant 2026 application open small business",
+    "USDA RBDG rural business development grant 2026 apply deadline",
+    "DOT DBE disadvantaged business enterprise grant 2026 open application",
+    "SBA SBIR small business innovation research 2026 open solicitation",
 
-    # Corporate and foundation grants open now
-    "corporate foundation grant minority women-owned small business 2026 apply",
-    "Comcast RISE grant 2026 minority women-owned business",
-    "FedEx small business grant 2026 apply",
-    "Goldman Sachs 10000 Small Businesses grant 2026 Arizona",
-    "Visa Practical Business Skills grant minority-owned 2026",
-    "NSF small business innovation research SBIR minority 2026",
-    "EPA environmental justice small business grant 2026 apply",
+    # Corporate and foundation grants
+    "corporate foundation grant minority women-owned small business 2026 apply open",
+    "Comcast RISE grant 2026 minority women-owned business apply",
+    "FedEx small business grant 2026 apply open",
+    "Goldman Sachs 10000 Small Businesses 2026 Arizona apply",
+    "Visa She's Next grant women-owned business 2026 apply",
+    "Hello Alice small business grant 2026 minority women apply",
+    "Amber Grant women-owned business 2026 apply",
 ]
 
 SERPER_URL = "https://google.serper.dev/search"
