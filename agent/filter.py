@@ -36,12 +36,23 @@ You will receive a JSON array of raw search results (each with title, url, snipp
    If no results qualify, return an empty array: []"""
 
 
+def _sanitize(obj):
+    """Recursively strip non-ASCII characters from all string values."""
+    if isinstance(obj, str):
+        return obj.encode("ascii", errors="ignore").decode("ascii")
+    if isinstance(obj, list):
+        return [_sanitize(item) for item in obj]
+    if isinstance(obj, dict):
+        return {k: _sanitize(v) for k, v in obj.items()}
+    return obj
+
+
 def run(raw_results: list[dict]) -> list[dict]:
     if not raw_results:
         return []
 
     client = anthropic.Anthropic()
-    user_message = json.dumps(raw_results, ensure_ascii=True)
+    user_message = json.dumps(_sanitize(raw_results), ensure_ascii=True)
 
     try:
         response = client.messages.create(
