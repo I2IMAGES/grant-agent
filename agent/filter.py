@@ -1,5 +1,6 @@
 import json
 import logging
+import traceback
 import anthropic
 
 logger = logging.getLogger(__name__)
@@ -35,42 +36,66 @@ You will receive a JSON array of raw search results (each with title, url, snipp
    Only include grants with relevance_score >= 0.5.
    If no results qualify, return an empty array: []"""
 
+BATCH_SIZE = 20
+MAX_FIELD_CHARS = 500
 
-def _sanitize(obj):
-    """Recursively strip non-ASCII characters from all string values."""
+
+def _strip_non_ascii(value: str) -> str:
+    return value.encode("ascii", errors="ignore").decode("ascii")
+
+
+def _clean(obj):
+    """Recursively strip non-ASCII from all strings, then truncate to MAX_FIELD_CHARS."""
     if isinstance(obj, str):
-        return obj.encode("ascii", errors="ignore").decode("ascii")
+        return _strip_non_ascii(obj)[:MAX_FIELD_CHARS]
     if isinstance(obj, list):
-        return [_sanitize(item) for item in obj]
+        return [_clean(item) for item in obj]
     if isinstance(obj, dict):
-        return {k: _sanitize(v) for k, v in obj.items()}
+        return {k: _clean(v) for k, v in obj.items()}
     return obj
+
+
+def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
+    user_message = json.dumps(batch, ensure_ascii=True)
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=4096,
+        system=SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": user_message}],
+    )
+    content = response.content[0].text.strip()
+    grants = json.loads(content)
+    if not isinstance(grants, list):
+        raise ValueError(f"Expected JSON array, got {type(grants).__name__}")
+    return [g for g in grants if g.get("relevance_score", 0) >= 0.5]
 
 
 def run(raw_results: list[dict]) -> list[dict]:
     if not raw_results:
         return []
 
-    client = anthropic.Anthropic()
-    user_message = json.dumps(_sanitize(raw_results), ensure_ascii=True)
+    cleaned = [_clean(r) for r in raw_results]
+    logger.info("filter: cleaned %d results, sending in batches of %d", len(cleaned), BATCH_SIZE)
 
-    try:
-        response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=4096,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_message}],
-        )
-        content = response.content[0].text.strip()
-        grants = json.loads(content)
-        if not isinstance(grants, list):
-            raise ValueError("Expected a JSON array")
-        filtered = [g for g in grants if g.get("relevance_score", 0) >= 0.5]
-        logger.info("filter: %d/%d results passed relevance threshold", len(filtered), len(raw_results))
-        return filtered
-    except json.JSONDecodeError as e:
-        logger.error("filter: JSON parse error — %s", e)
-        return []
-    except Exception as e:
-        logger.error("filter: Claude API error — %s", e)
-        raise
+    client = anthropic.Anthropic()
+    all_grants: list[dict] = []
+
+    for batch_start in range(0, len(cleaned), BATCH_SIZE):
+        batch = cleaned[batch_start : batch_start + BATCH_SIZE]
+        batch_num = batch_start // BATCH_SIZE + 1
+        try:
+            grants = _call_claude(client, batch)
+            logger.info("filter: batch %d → %d grants passed threshold", batch_num, len(grants))
+            all_grants.extend(grants)
+        except json.JSONDecodeError as e:
+            logger.error("filter: batch %d JSON parse error — %s", batch_num, e)
+        except Exception:
+            logger.error(
+                "filter: batch %d Claude API error:\n%s",
+                batch_num,
+                traceback.format_exc(),
+            )
+            raise
+
+    logger.info("filter: %d/%d total results passed relevance threshold", len(all_grants), len(cleaned))
+    return all_grants
