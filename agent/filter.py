@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import re
 import traceback
 import anthropic
@@ -64,6 +65,20 @@ def _strip_fences(text: str) -> str:
     return text.strip()
 
 
+def _make_client() -> anthropic.Anthropic:
+    """Build Anthropic client with API key sanitized of invisible Unicode characters."""
+    raw_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    clean_key = raw_key.encode("ascii", errors="ignore").decode("ascii").strip()
+    if len(clean_key) != len(raw_key):
+        logger.warning(
+            "filter: ANTHROPIC_API_KEY contained %d non-ASCII/whitespace character(s) "
+            "that were stripped (original len=%d, clean len=%d) - "
+            "re-copy the key from console.anthropic.com and reset the secret",
+            len(raw_key) - len(clean_key), len(raw_key), len(clean_key),
+        )
+    return anthropic.Anthropic(api_key=clean_key)
+
+
 def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
     user_message = json.dumps(batch, ensure_ascii=True)
     response = client.messages.create(
@@ -86,7 +101,7 @@ def run(raw_results: list[dict]) -> list[dict]:
     cleaned = [_clean(r) for r in raw_results]
     logger.info("filter: cleaned %d results, sending in batches of %d", len(cleaned), BATCH_SIZE)
 
-    client = anthropic.Anthropic()
+    client = _make_client()
     all_grants: list[dict] = []
     any_batch_failed = False
 
