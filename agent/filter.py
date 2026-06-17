@@ -1,5 +1,6 @@
 import json
 import logging
+import re
 import traceback
 import anthropic
 
@@ -55,6 +56,14 @@ def _clean(obj):
     return obj
 
 
+def _strip_fences(text: str) -> str:
+    """Remove markdown code fences Claude sometimes wraps JSON in."""
+    text = text.strip()
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    return text.strip()
+
+
 def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
     user_message = json.dumps(batch, ensure_ascii=True)
     response = client.messages.create(
@@ -63,7 +72,7 @@ def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_message}],
     )
-    content = response.content[0].text.strip()
+    content = _strip_fences(response.content[0].text)
     grants = json.loads(content)
     if not isinstance(grants, list):
         raise ValueError("Expected JSON array, got {}".format(type(grants).__name__))
@@ -79,6 +88,7 @@ def run(raw_results: list[dict]) -> list[dict]:
 
     client = anthropic.Anthropic()
     all_grants: list[dict] = []
+    any_batch_failed = False
 
     for batch_start in range(0, len(cleaned), BATCH_SIZE):
         batch = cleaned[batch_start : batch_start + BATCH_SIZE]
@@ -89,13 +99,21 @@ def run(raw_results: list[dict]) -> list[dict]:
             all_grants.extend(grants)
         except json.JSONDecodeError as e:
             logger.error("filter: batch %d JSON parse error - %s", batch_num, e)
+            any_batch_failed = True
         except Exception:
             logger.error(
-                "filter: batch %d Claude API error:\n%s",
+                "filter: batch %d error (full traceback below):\n%s",
                 batch_num,
                 traceback.format_exc(),
             )
-            raise
+            any_batch_failed = True
 
-    logger.info("filter: %d/%d total results passed relevance threshold", len(all_grants), len(cleaned))
+    if any_batch_failed and not all_grants:
+        # Every batch failed - signal to the caller to use raw fallback
+        raise RuntimeError("All Claude filter batches failed - see logs above for details")
+
+    logger.info(
+        "filter: %d/%d results passed (any_batch_failed=%s)",
+        len(all_grants), len(cleaned), any_batch_failed,
+    )
     return all_grants
