@@ -169,12 +169,30 @@
   </div>
 
   {% if note %}
-  <div class="note-banner">⚠ {{ note }}</div>
+  <div class="note-banner">{{ note }}</div>
   {% endif %}
 
   <!-- Body -->
   <div class="body">
 
+    {% if filter_failed %}
+    <!-- Fallback: AI filtering unavailable, show all results in a flat list -->
+    <div class="section">
+      <div class="section-heading">ALL RESULTS (UNFILTERED)</div>
+      {% for grant in grants %}
+      <div class="grant-card">
+        <div class="grant-title">
+          <a href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">{{ grant.title }}</a>
+        </div>
+        {% if grant.snippet %}
+        <p class="grant-summary">{{ grant.snippet }}</p>
+        {% endif %}
+        <a class="cta-btn" href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">View Grant</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
     {% for group in eligibility_groups %}
     <div class="section">
       <div class="section-heading">{{ group }}</div>
@@ -188,10 +206,10 @@
           </div>
           <div class="grant-meta">
             {% if grant.amount %}
-            <span class="meta-pill amount">💰 {{ grant.amount }}</span>
+            <span class="meta-pill amount">{{ grant.amount }}</span>
             {% endif %}
             {% if grant.deadline %}
-            <span class="meta-pill deadline">📅 Deadline: {{ grant.deadline }}</span>
+            <span class="meta-pill deadline">Deadline: {{ grant.deadline }}</span>
             {% endif %}
           </div>
           {% if grant.summary %}
@@ -199,7 +217,7 @@
           {% elif grant.snippet %}
           <p class="grant-summary">{{ grant.snippet }}</p>
           {% endif %}
-          <a class="cta-btn" href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">View Grant →</a>
+          <a class="cta-btn" href="{{ grant.url }}" target="_blank" rel="noopener noreferrer">View Grant</a>
         </div>
         {% endfor %}
       {% else %}
@@ -207,14 +225,15 @@
       {% endif %}
     </div>
     {% endfor %}
+    {% endif %}
 
   </div>
 
   <!-- Footer -->
   <div class="footer">
     <p>
-      Inward2Onward LLC · Glendale, AZ<br />
-      <a href="tel:6232728066">623.272.8066</a> ·
+      Inward2Onward LLC &middot; Glendale, AZ<br />
+      <a href="tel:6232728066">623.272.8066</a> &middot;
       <a href="mailto:ej@inward2onward.com">ej@inward2onward.com</a>
     </p>
     <p style="margin-top:8px;font-size:11px;">

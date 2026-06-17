@@ -21,7 +21,7 @@ def _group_grants(grants: list[dict]) -> dict[str, list[dict]]:
     return groups
 
 
-def send(grants: list[dict], sources_checked: int = 0, note: str = "") -> None:
+def send(grants: list[dict], sources_checked: int = 0, note: str = "", filter_failed: bool = False) -> None:
     resend.api_key = os.environ["RESEND_API_KEY"]
     recipient = os.environ["RECIPIENT_EMAIL"]
     today_str = date.today().strftime("%B %d, %Y")
@@ -40,9 +40,10 @@ def send(grants: list[dict], sources_checked: int = 0, note: str = "") -> None:
         date=today_str,
         sources_checked=sources_checked,
         note=note,
+        filter_failed=filter_failed,
     )
 
-    subject = f"Grant Digest — {len(grants)} New Opportunities · {today_str}"
+    subject = "Grant Digest - {} New Opportunities - {}".format(len(grants), today_str)
 
     params: resend.Emails.SendParams = {
         "from": "grants@inward2onward.com",
@@ -59,20 +60,19 @@ def send_no_new_grants() -> None:
     recipient = os.environ["RECIPIENT_EMAIL"]
     today_str = date.today().strftime("%B %d, %Y")
 
-    html = f"""
-    <html><body style="font-family:sans-serif;color:#475569;padding:2rem;">
-    <h2 style="color:#1E293B;">INWARD2ONWARD | Daily Grant Digest | {today_str}</h2>
-    <p>No new grant opportunities were found today that haven't been seen in the last 30 days.</p>
-    <p style="font-size:0.85rem;color:#94a3b8;">
-      Inward2Onward LLC · Glendale, AZ · 623.272.8066 · ej@inward2onward.com
-    </p>
-    </body></html>
-    """
+    html = (
+        "<html><body style=\"font-family:sans-serif;color:#475569;padding:2rem;\">"
+        "<h2 style=\"color:#1E293B;\">INWARD2ONWARD | Daily Grant Digest | {}</h2>"
+        "<p>No new grant opportunities were found today that haven't been seen in the last 30 days.</p>"
+        "<p style=\"font-size:0.85rem;color:#94a3b8;\">"
+        "Inward2Onward LLC - Glendale, AZ - 623.272.8066 - ej@inward2onward.com"
+        "</p></body></html>"
+    ).format(today_str)
 
     params: resend.Emails.SendParams = {
         "from": "grants@inward2onward.com",
         "to": [recipient],
-        "subject": f"Grant Digest — No New Results · {today_str}",
+        "subject": "Grant Digest - No New Results - {}".format(today_str),
         "html": html,
     }
     resend.Emails.send(params)

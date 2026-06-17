@@ -66,7 +66,7 @@ def _call_claude(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
     content = response.content[0].text.strip()
     grants = json.loads(content)
     if not isinstance(grants, list):
-        raise ValueError(f"Expected JSON array, got {type(grants).__name__}")
+        raise ValueError("Expected JSON array, got {}".format(type(grants).__name__))
     return [g for g in grants if g.get("relevance_score", 0) >= 0.5]
 
 
@@ -85,10 +85,10 @@ def run(raw_results: list[dict]) -> list[dict]:
         batch_num = batch_start // BATCH_SIZE + 1
         try:
             grants = _call_claude(client, batch)
-            logger.info("filter: batch %d → %d grants passed threshold", batch_num, len(grants))
+            logger.info("filter: batch %d - %d grants passed threshold", batch_num, len(grants))
             all_grants.extend(grants)
         except json.JSONDecodeError as e:
-            logger.error("filter: batch %d JSON parse error — %s", batch_num, e)
+            logger.error("filter: batch %d JSON parse error - %s", batch_num, e)
         except Exception:
             logger.error(
                 "filter: batch %d Claude API error:\n%s",

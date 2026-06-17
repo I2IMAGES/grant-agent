@@ -9,7 +9,7 @@ load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(name)s — %(message)s",
+    format="%(asctime)s %(levelname)s %(name)s - %(message)s",
     stream=sys.stdout,
 )
 logger = logging.getLogger(__name__)
@@ -41,29 +41,36 @@ def main() -> None:
 
     # 3. Early exit if fewer than 2 new results
     if len(new_results) < 2:
-        logger.info("Fewer than 2 new results — sending no-new-grants email")
+        logger.info("Fewer than 2 new results - sending no-new-grants email")
         emailer.send_no_new_grants()
         sys.exit(0)
 
     # 4. Filter with Claude
     logger.info("Step 4: filtering with Claude")
     filter_note = ""
+    filter_failed = False
     try:
         filtered_grants = grant_filter.run(new_results)
     except Exception as e:
-        logger.error("Claude filter failed: %s — sending raw results", e)
+        logger.error("Claude filter failed: %s - sending raw results", e)
         filtered_grants = new_results
-        filter_note = "⚠ AI filtering was unavailable. Results below are unfiltered raw search results."
+        filter_note = "AI filtering was unavailable. Results below are unfiltered raw search results."
+        filter_failed = True
 
     if not filtered_grants:
-        logger.info("No grants passed filter — sending no-new-grants email")
+        logger.info("No grants passed filter - sending no-new-grants email")
         emailer.send_no_new_grants()
         sys.exit(0)
 
     # 5. Send email digest
     logger.info("Step 5: sending email with %d grants", len(filtered_grants))
     try:
-        emailer.send(filtered_grants, sources_checked=sources_checked, note=filter_note)
+        emailer.send(
+            filtered_grants,
+            sources_checked=sources_checked,
+            note=filter_note,
+            filter_failed=filter_failed,
+        )
     except Exception as e:
         logger.critical("Resend failed: %s", e, exc_info=True)
         sys.exit(1)
@@ -72,7 +79,7 @@ def main() -> None:
     logger.info("Step 6: writing %d grants to Supabase", len(filtered_grants))
     deduplicator.write(filtered_grants)
 
-    logger.info("Done — %d grants sent in digest", len(filtered_grants))
+    logger.info("Done - %d grants sent in digest", len(filtered_grants))
 
 
 if __name__ == "__main__":

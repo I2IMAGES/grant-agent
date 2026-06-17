@@ -50,7 +50,7 @@ def fetch_query(query: str, api_key: str) -> list[dict]:
             })
         return results
     except Exception as e:
-        logger.warning("Query failed: %r — %s", query, e)
+        logger.warning("Query failed: %r - %s", query, e)
         return []
 
 
