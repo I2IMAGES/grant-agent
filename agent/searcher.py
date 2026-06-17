@@ -56,6 +56,7 @@ def fetch_query(query: str, api_key: str) -> list[dict]:
                 "title": item.get("title", ""),
                 "url": item.get("link", ""),
                 "snippet": item.get("snippet", ""),
+                "source_query": query,
             })
         return results
     except Exception as e:

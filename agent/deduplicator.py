@@ -81,3 +81,36 @@ def write(grants: list[dict]) -> None:
         logger.info("deduplicator.write: upserted %d rows", len(rows))
     except Exception as e:
         logger.error("deduplicator.write failed: %s", e)
+
+
+def log_search_results(
+    raw_results: list[dict],
+    new_urls: set[str],
+    filtered_urls: set[str],
+    run_at: str,
+) -> None:
+    """Insert every raw search result into search_results for audit purposes."""
+    client = _get_client()
+    if client is None:
+        return
+    rows = []
+    for r in raw_results:
+        url = r.get("url", "")
+        if not url:
+            continue
+        rows.append({
+            "run_at": run_at,
+            "source_query": r.get("source_query", ""),
+            "title": r.get("title", ""),
+            "url": url,
+            "snippet": r.get("snippet", ""),
+            "passed_dedup": url in new_urls,
+            "passed_filter": url in filtered_urls,
+        })
+    if not rows:
+        return
+    try:
+        client.table("search_results").insert(rows).execute()
+        logger.info("deduplicator.log_search_results: logged %d rows", len(rows))
+    except Exception as e:
+        logger.error("deduplicator.log_search_results failed: %s", e)

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Main orchestrator for the Inward2Onward daily grant discovery agent."""
 
+import hashlib
 import logging
 import sys
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,6 +23,8 @@ import emailer
 
 
 def main() -> None:
+    run_at = datetime.now(timezone.utc).isoformat()
+
     # 1. Search
     logger.info("Step 1: running searcher")
     raw_results = searcher.run()
@@ -32,16 +36,17 @@ def main() -> None:
     urls = [r["url"] for r in raw_results if r.get("url")]
     seen_ids = deduplicator.read(urls)
 
-    import hashlib
     new_results = [
         r for r in raw_results
         if hashlib.sha256(r.get("url", "").encode()).hexdigest() not in seen_ids
     ]
+    new_urls = {r["url"] for r in new_results if r.get("url")}
     logger.info("%d new (unseen) results after dedup", len(new_results))
 
     # 3. Early exit if fewer than 2 new results
     if len(new_results) < 2:
         logger.info("Fewer than 2 new results - sending no-new-grants email")
+        deduplicator.log_search_results(raw_results, new_urls, set(), run_at)
         emailer.send_no_new_grants()
         sys.exit(0)
 
@@ -59,8 +64,11 @@ def main() -> None:
 
     if not filtered_grants:
         logger.info("No grants passed filter - sending no-new-grants email")
+        deduplicator.log_search_results(raw_results, new_urls, set(), run_at)
         emailer.send_no_new_grants()
         sys.exit(0)
+
+    filtered_urls = {g["url"] for g in filtered_grants if g.get("url")}
 
     # 5. Send email digest
     logger.info("Step 5: sending email with %d grants", len(filtered_grants))
@@ -75,9 +83,10 @@ def main() -> None:
         logger.critical("Resend failed: %s", e, exc_info=True)
         sys.exit(1)
 
-    # 6. Write new grants to Supabase
+    # 6. Write new grants to Supabase and log all search results for audit
     logger.info("Step 6: writing %d grants to Supabase", len(filtered_grants))
     deduplicator.write(filtered_grants)
+    deduplicator.log_search_results(raw_results, new_urls, filtered_urls, run_at)
 
     logger.info("Done - %d grants sent in digest", len(filtered_grants))
 
