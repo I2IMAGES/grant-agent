@@ -31,10 +31,8 @@ SEARCH_QUERIES = [
     "FedEx small business grant 2026 apply",
     "Goldman Sachs 10000 Small Businesses grant 2026 Arizona",
     "Visa Practical Business Skills grant minority-owned 2026",
-]
-    "NSF small business innovation grant minority 2025",
-    "EPA environmental justice grant minority business 2025",
-    "corporate foundation grant minority women-owned business 2025",
+    "NSF small business innovation research SBIR minority 2026",
+    "EPA environmental justice small business grant 2026 apply",
 ]
 
 SERPER_URL = "https://google.serper.dev/search"
