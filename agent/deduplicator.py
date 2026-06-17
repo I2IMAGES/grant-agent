@@ -17,6 +17,7 @@ def _get_client():
         url = os.environ["SUPABASE_URL"]
         key = os.environ["SUPABASE_KEY"]
         print(f"[deduplicator] SUPABASE_URL prefix: {url[:20]!r}")
+        print(f"[deduplicator] SUPABASE_KEY prefix: {key[:10]!r}")
         _client = create_client(url, key)
     except Exception as e:
         logger.error("Supabase connection failed: %s", e)
