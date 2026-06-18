@@ -79,6 +79,17 @@
       border-bottom: 2px solid #e2e8f0;
       margin-bottom: 20px;
     }
+    .section-heading.partnership {
+      color: #7C3AED;
+      border-bottom-color: #ede9fe;
+    }
+    .section-subhead {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: -14px;
+      margin-bottom: 20px;
+    }
     .empty-section {
       font-size: 14px;
       color: #94a3b8;
@@ -195,7 +206,10 @@
     {% else %}
     {% for group in eligibility_groups %}
     <div class="section">
-      <div class="section-heading">{{ group }}</div>
+      <div class="section-heading {% if group == 'PARTNERSHIP' %}partnership{% endif %}">{{ group }}</div>
+      {% if group == 'PARTNERSHIP' %}
+      <div class="section-subhead">Grants awarded to nonprofits or agencies that may need NMET subcontractors - contact the awardee organization to offer transportation services.</div>
+      {% endif %}
 
       {% set group_grants = grouped[group] %}
       {% if group_grants %}

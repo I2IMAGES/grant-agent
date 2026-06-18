@@ -7,7 +7,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 logger = logging.getLogger(__name__)
 
-ELIGIBILITY_GROUPS = ["MINORITY-OWNED", "WOMEN-OWNED", "HUBZONE"]
+ELIGIBILITY_GROUPS = ["MINORITY-OWNED", "WOMEN-OWNED", "HUBZONE", "PARTNERSHIP"]
 TEMPLATE_DIR = Path(__file__).parent / "templates"
 
 
