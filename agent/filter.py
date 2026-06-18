@@ -112,19 +112,30 @@ def run(raw_results: list[dict]) -> list[dict]:
     for batch_start in range(0, len(cleaned), BATCH_SIZE):
         batch = cleaned[batch_start : batch_start + BATCH_SIZE]
         batch_num = batch_start // BATCH_SIZE + 1
-        try:
-            grants = _call_claude(api_key, batch)
-            logger.info("filter: batch %d - %d grants passed threshold", batch_num, len(grants))
-            all_grants.extend(grants)
-        except json.JSONDecodeError as e:
-            logger.error("filter: batch %d JSON parse error - %s", batch_num, e)
-            any_batch_failed = True
-        except Exception:
-            logger.error(
-                "filter: batch %d error (full traceback below):\n%s",
-                batch_num,
-                traceback.format_exc(),
-            )
+        last_exc: Exception | None = None
+        for attempt in range(1, 4):
+            try:
+                grants = _call_claude(api_key, batch)
+                logger.info("filter: batch %d - %d grants passed threshold", batch_num, len(grants))
+                all_grants.extend(grants)
+                last_exc = None
+                break
+            except (json.JSONDecodeError, ValueError) as e:
+                logger.warning("filter: batch %d attempt %d parse error - %s", batch_num, attempt, e)
+                last_exc = e
+            except Exception as e:
+                logger.warning("filter: batch %d attempt %d error - %s", batch_num, attempt, e)
+                last_exc = e
+                break  # non-parse errors are unlikely to recover on retry
+        if last_exc is not None:
+            if isinstance(last_exc, (json.JSONDecodeError, ValueError)):
+                logger.error("filter: batch %d failed after 3 attempts (JSON parse) - %s", batch_num, last_exc)
+            else:
+                logger.error(
+                    "filter: batch %d failed (full traceback below):\n%s",
+                    batch_num,
+                    traceback.format_exc(),
+                )
             any_batch_failed = True
 
     if any_batch_failed and not all_grants:
