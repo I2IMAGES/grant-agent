@@ -68,6 +68,24 @@ def main() -> None:
         emailer.send_no_new_grants()
         sys.exit(0)
 
+    # 4b. Suppress grants whose title was already sent in the last 7 days
+    if not filter_failed:
+        recent_titles = deduplicator.read_recent_titles(days=7)
+        before = len(filtered_grants)
+        filtered_grants = [
+            g for g in filtered_grants
+            if deduplicator._title_key(g.get("title", "")) not in recent_titles
+        ]
+        suppressed = before - len(filtered_grants)
+        if suppressed:
+            logger.info("Step 4b: suppressed %d repeat grant(s) seen in last 7 days", suppressed)
+
+    if not filtered_grants:
+        logger.info("All grants suppressed as recent repeats - sending no-new-grants email")
+        deduplicator.log_search_results(raw_results, new_urls, set(), run_at)
+        emailer.send_no_new_grants()
+        sys.exit(0)
+
     filtered_urls = {g["url"] for g in filtered_grants if g.get("url")}
 
     # 5. Send email digest

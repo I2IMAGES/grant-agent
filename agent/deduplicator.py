@@ -1,6 +1,7 @@
 import os
 import hashlib
 import logging
+import re
 from datetime import datetime, timezone, timedelta
 
 logger = logging.getLogger(__name__)
@@ -27,6 +28,30 @@ def _get_client():
 
 def _grant_id(url: str) -> str:
     return hashlib.sha256(url.encode()).hexdigest()
+
+
+def _title_key(title: str) -> str:
+    """Normalize a grant title for fuzzy duplicate detection."""
+    return " ".join(re.sub(r"[^a-z0-9 ]", "", title.lower()).split()[:8])
+
+
+def read_recent_titles(days: int = 7) -> set[str]:
+    """Return normalized title keys for grants sent within the last N days."""
+    client = _get_client()
+    if client is None:
+        return set()
+    try:
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+        resp = (
+            client.table("seen_grants")
+            .select("title")
+            .gte("last_seen_at", cutoff)
+            .execute()
+        )
+        return {_title_key(row["title"]) for row in (resp.data or []) if row.get("title")}
+    except Exception as e:
+        logger.error("deduplicator.read_recent_titles failed: %s", e)
+        return set()
 
 
 def read(urls: list[str]) -> set[str]:
