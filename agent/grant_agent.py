@@ -17,6 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 import searcher
+import federal_sources
 import deduplicator
 import filter as grant_filter
 import emailer
@@ -25,11 +26,24 @@ import emailer
 def main() -> None:
     run_at = datetime.now(timezone.utc).isoformat()
 
-    # 1. Search
+    # 1. Search — Serper (Google) + Grants.gov + SAM.gov
     logger.info("Step 1: running searcher")
     raw_results = searcher.run()
+    logger.info("searcher returned %d raw results", len(raw_results))
+
+    logger.info("Step 1b: fetching federal sources (grants.gov / sam.gov)")
+    federal_results = federal_sources.run()
+    logger.info("federal sources returned %d results", len(federal_results))
+
+    # Merge, deduplicating by URL
+    seen_urls: set[str] = {r["url"] for r in raw_results if r.get("url")}
+    for r in federal_results:
+        if r.get("url") and r["url"] not in seen_urls:
+            seen_urls.add(r["url"])
+            raw_results.append(r)
+
     sources_checked = len(raw_results)
-    logger.info("searcher returned %d raw results", sources_checked)
+    logger.info("total raw results after merge: %d", sources_checked)
 
     # 2. Deduplicate against Supabase
     logger.info("Step 2: deduplicating")

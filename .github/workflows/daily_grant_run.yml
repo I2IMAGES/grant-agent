@@ -33,4 +33,5 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
         run: python grant_agent.py
