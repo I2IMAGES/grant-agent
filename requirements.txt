@@ -4,3 +4,4 @@ resend
 requests
 python-dotenv
 jinja2
+feedparser

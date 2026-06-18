@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 import searcher
 import federal_sources
+import rss_sources
 import deduplicator
 import filter as grant_filter
 import emailer
@@ -35,9 +36,13 @@ def main() -> None:
     federal_results = federal_sources.run()
     logger.info("federal sources returned %d results", len(federal_results))
 
-    # Merge, deduplicating by URL
+    logger.info("Step 1c: fetching RSS feeds")
+    rss_results = rss_sources.run()
+    logger.info("rss sources returned %d results", len(rss_results))
+
+    # Merge all sources, deduplicating by URL
     seen_urls: set[str] = {r["url"] for r in raw_results if r.get("url")}
-    for r in federal_results:
+    for r in federal_results + rss_results:
         if r.get("url") and r["url"] not in seen_urls:
             seen_urls.add(r["url"])
             raw_results.append(r)
