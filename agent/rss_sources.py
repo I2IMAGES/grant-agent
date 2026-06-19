@@ -11,23 +11,31 @@ logger = logging.getLogger(__name__)
 # Add or remove feeds here — failures are logged and skipped silently.
 RSS_FEEDS = [
     # Federal agency NOFA announcements
-    ("Grants.gov - New Opportunities",      "https://www.grants.gov/rss/GG_NewOppByCategory.xml"),
+    # Grants.gov RSS requires a category — use Transportation (category 11)
+    ("Grants.gov - Transportation",         "https://www.grants.gov/rss/GG_NewOppByCategory.xml?category=TP"),
+    ("Grants.gov - Health",                 "https://www.grants.gov/rss/GG_NewOppByCategory.xml?category=HL"),
+    ("Grants.gov - Community Development",  "https://www.grants.gov/rss/GG_NewOppByCategory.xml?category=CD"),
     ("SAMHSA Grant Announcements",          "https://www.samhsa.gov/grants/grant-announcements/rss"),
     ("MBDA News & Grants",                  "https://www.mbda.gov/rss.xml"),
     ("SBA News",                            "https://www.sba.gov/rss/news"),
     ("HHS Grants",                          "https://www.hhs.gov/grants/rss/index.html"),
-    ("EDA News",                            "https://www.eda.gov/rss.xml"),
-    ("USDA Rural Development News",        "https://www.rd.usda.gov/rss/rd-news-releases"),
+    ("USDA Rural Development News",         "https://www.rd.usda.gov/rss/rd-news-releases"),
 
     # Grant alert blogs and newsletters
     ("Seliger + Associates Grant Alerts",   "https://seliger.com/feed/"),
-    ("GrantStation News",                   "https://grantstation.com/feed"),
     ("Hello Alice Small Business Grants",   "https://helloalice.com/feed/"),
     ("Arizona Commerce Authority News",     "https://www.azcommerce.com/feed/"),
+
+    # Foundation and nonprofit funding sources
+    ("GrantWatch News",                     "https://www.grantwatch.com/cat/47/transportation-grants.html/feed/rss2/"),
+    ("NonProfit Source Grant News",         "https://nonprofitsource.com/feed/"),
+    ("Arizona Foundation for Women",        "https://www.azfw.org/feed/"),
 ]
 
 # Only include items published within this many days
-RECENCY_DAYS = 7
+# Set to 30 so we catch feeds that update weekly or biweekly;
+# the Supabase deduplicator prevents re-sending items already seen.
+RECENCY_DAYS = 30
 
 
 def _parse_date(entry) -> datetime | None:
@@ -53,6 +61,7 @@ def _fetch_feed(label: str, url: str, cutoff: datetime) -> list[dict]:
         resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
         resp.raise_for_status()
         feed = feedparser.parse(resp.text)
+        logger.info("rss_sources: %r HTTP %d, %d entries", label, resp.status_code, len(feed.entries))
         for entry in feed.entries:
             pub_date = _parse_date(entry)
             if pub_date and pub_date < cutoff:
@@ -93,6 +102,6 @@ def run() -> list[dict]:
                 seen_urls.add(item["url"])
                 all_results.append(item)
 
-    logger.info("rss_sources: %d items from %d feeds (last %d days)",
+    logger.info("rss_sources: %d unique items from %d feeds (last %d days)",
                 len(all_results), len(RSS_FEEDS), RECENCY_DAYS)
     return all_results

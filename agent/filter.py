@@ -10,12 +10,12 @@ logger = logging.getLogger(__name__)
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
-SYSTEM_PROMPT = """You are a grant research assistant for Inward2Onward LLC, a minority-owned, women-owned small business in Glendale, Arizona that also qualifies for HUBZone certification.
+_SYSTEM_PROMPT_TEMPLATE = """You are a grant research assistant for Inward2Onward LLC, a minority-owned, women-owned small business in Glendale, Arizona that also qualifies for HUBZone certification.
 
 WHAT INWARD2ONWARD DOES:
 Inward2Onward provides Non-Medical Emergency Transportation (NMET) services - transporting clients to medical appointments, treatment programs, social services, job training, and community resources. Their clients are typically referred by nonprofits, government agencies, healthcare providers, and social service organizations.
 
-Today's date is June 18, 2026. Any deadline before this date is expired.
+Today's date is {today}. Any deadline before this date is expired.
 
 You will receive a JSON array of raw search results (each with title, url, snippet). Evaluate each for TWO types of opportunity:
 
@@ -58,6 +58,12 @@ Only include results with relevance_score >= 0.5.
 If no results qualify, return an empty array: []"""
 
 BATCH_SIZE = 20
+
+
+def _build_system_prompt() -> str:
+    from datetime import date
+    today = date.today().strftime("%B %d, %Y")
+    return _SYSTEM_PROMPT_TEMPLATE.format(today=today)
 MAX_FIELD_CHARS = 500
 
 
@@ -90,7 +96,7 @@ def _call_claude(api_key: str, batch: list[dict]) -> list[dict]:
     payload = {
         "model": ANTHROPIC_MODEL,
         "max_tokens": 4096,
-        "system": SYSTEM_PROMPT,
+        "system": _build_system_prompt(),
         "messages": [{"role": "user", "content": json.dumps(batch, ensure_ascii=True)}],
     }
     resp = requests.post(
