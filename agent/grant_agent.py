@@ -87,9 +87,24 @@ def main() -> None:
         emailer.send_no_new_grants()
         sys.exit(0)
 
-    # 4b. Suppress grants whose title was already sent in the last 7 days
+    # 4b. Within-run title dedup: if two grants share the same normalized title key,
+    # keep only the first (they're the same program at different URLs).
     if not filter_failed:
-        recent_titles = deduplicator.read_recent_titles(days=7)
+        seen_title_keys: set[str] = set()
+        deduped: list[dict] = []
+        for g in filtered_grants:
+            key = deduplicator._title_key(g.get("title", ""))
+            if key not in seen_title_keys:
+                seen_title_keys.add(key)
+                deduped.append(g)
+        intra_run_suppressed = len(filtered_grants) - len(deduped)
+        if intra_run_suppressed:
+            logger.info("Step 4b: removed %d intra-run duplicate title(s)", intra_run_suppressed)
+        filtered_grants = deduped
+
+    # 4c. Suppress grants whose title was already sent in the last 30 days
+    if not filter_failed:
+        recent_titles = deduplicator.read_recent_titles(days=30)
         before = len(filtered_grants)
         filtered_grants = [
             g for g in filtered_grants
@@ -97,10 +112,10 @@ def main() -> None:
         ]
         suppressed = before - len(filtered_grants)
         if suppressed:
-            logger.info("Step 4b: suppressed %d repeat grant(s) seen in last 7 days", suppressed)
+            logger.info("Step 4c: suppressed %d repeat grant(s) seen in last 30 days", suppressed)
 
     if not filtered_grants:
-        logger.info("All grants suppressed as recent repeats - sending no-new-grants email")
+        logger.info("All grants suppressed as recent or intra-run repeats - sending no-new-grants email")
         deduplicator.log_search_results(raw_results, new_urls, set(), run_at)
         emailer.send_no_new_grants()
         sys.exit(0)

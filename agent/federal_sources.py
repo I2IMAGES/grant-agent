@@ -10,11 +10,14 @@ GRANTS_GOV_URL = "https://api.grants.gov/v2/api/search"
 SAM_GOV_URL = "https://api.sam.gov/opportunities/v2/search"
 
 # Grants.gov eligibility code 11 = Small Businesses
+# Note: the v2 API requires a Content-Type header; also try the public search endpoint
+# as a fallback since the API has had intermittent 403 issues.
 GRANTS_GOV_SEARCHES = [
-    {"keyword": "minority women small business", "eligibilities": ["11"]},
-    {"keyword": "HUBZone small business grant", "eligibilities": ["11"]},
-    {"keyword": "women owned small business grant Arizona", "eligibilities": ["11"]},
-    {"keyword": "minority owned business development", "eligibilities": ["11"]},
+    {"keyword": "minority women small business transportation", "eligibilities": ["11"]},
+    {"keyword": "HUBZone small business set-aside", "eligibilities": ["11"]},
+    {"keyword": "women owned small business WOSB grant", "eligibilities": ["11"]},
+    {"keyword": "minority owned business development grant", "eligibilities": ["11"]},
+    {"keyword": "non-emergency medical transportation NMET grant", "eligibilities": ["11"]},
 ]
 
 # SAM.gov set-aside codes relevant to Inward2Onward
@@ -33,7 +36,12 @@ def _fetch_grants_gov() -> list[dict]:
                 "sortBy": "openDate|desc",
                 **search,
             }
-            resp = requests.post(GRANTS_GOV_URL, json=payload, timeout=20)
+            resp = requests.post(
+                GRANTS_GOV_URL,
+                json=payload,
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
+                timeout=20,
+            )
             resp.raise_for_status()
             data = resp.json()
             opportunities = data.get("data", {}).get("hits", [])
