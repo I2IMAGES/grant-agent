@@ -36,12 +36,19 @@ The strategy: the funded nonprofit becomes a customer for NMET services.
 Tag these with: PARTNERSHIP
 
 HARD REJECT (exclude entirely, relevance_score 0):
-- Deadline has already passed (before June 18, 2026)
-- Pure news articles or press recaps with no actionable opportunity
-- General program overview pages with no open application
-- Loans, bonds, or equity investments
-- Grants only for large corporations, universities, or government agencies with no subcontracting angle
+- Deadline has already passed (before {today})
+- The grant cycle shown is from a prior year (2025 or earlier) — e.g. "2025 application", "FY2025 awards", "2024 recipients"
+- Award announcements, past winners lists, or "grant awarded to" news — these are done deals
+- Pure news articles or press recaps with no actionable open application link
+- General program overview pages ("about our grants", "grant history") with no current open application
+- Loans, bonds, lines of credit, or equity investments
+- Grants only for large corporations, accredited universities, or government agencies with no subcontracting angle
 - No plausible connection to NMET services or I2O eligibility
+- Results that say "deadline passed", "closed", "not accepting applications", or "next cycle TBD"
+
+BORDERLINE — use lower score (0.5-0.6) for:
+- Grant programs that are recurring but the current cycle's opening date is unclear
+- PARTNERSHIP leads where the transportation need is indirect or speculative
 
 For each qualifying result, extract:
 - title: cleaned program name
