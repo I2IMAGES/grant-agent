@@ -191,7 +191,9 @@ Seliger's principle: **an honest budget tells a story.** Every line item should 
 
 ## Part III — 12-Month Engagement Plan
 
-### Phase 1: Foundation (Months 1–2, July–August 2026)
+The five phases below describe concurrent workstreams, not sequential steps. Foundation work (Phase 1) must complete first; after that, direct grant applications (Phase 2), partnership development (Phase 3), and federal contracting (Phase 4) run simultaneously throughout the engagement. Reporting and renewal (Phase 5) begin in the final quarter. Date ranges indicate when each phase is most active.
+
+### Phase 1: Foundation (July–August 2026)
 
 **Goal:** Build the grant-ready infrastructure before applying anywhere.
 
@@ -210,7 +212,7 @@ Seliger's principle: **an honest budget tells a story.** Every line item should 
 
 ---
 
-### Phase 2: Direct Grant Applications (Months 2–6, August–December 2026)
+### Phase 2: Direct Grant Applications (September–December 2026)
 
 **Goal:** Submit 8–12 direct grant applications across the MINORITY-OWNED, WOMEN-OWNED, and HUBZONE lanes identified by the discovery agent.
 
@@ -243,7 +245,7 @@ Seliger's principle: **an honest budget tells a story.** Every line item should 
 
 ---
 
-### Phase 3: Partnership Development (Months 3–8, September 2026–February 2027)
+### Phase 3: Partnership Development (September 2026–February 2027)
 
 **Goal:** Identify 3–5 nonprofit/agency partners who have received (or are applying for) federal grants that include a transportation component. Execute subcontracting agreements with at least 2.
 
@@ -278,7 +280,7 @@ For each PARTNERSHIP lead in the daily digest:
 
 ---
 
-### Phase 4: Federal Contracting Track (Months 4–10, October 2026–April 2027)
+### Phase 4: Federal Contracting Track (October 2026–April 2027)
 
 **Goal:** Pursue 2–3 federal contract vehicles that leverage WOSB and HUBZone certifications for recurring revenue rather than one-time grants.
 
@@ -298,7 +300,7 @@ This track runs parallel to grant applications but requires different positionin
 
 ---
 
-### Phase 5: Reporting & Renewal (Months 10–12, April–June 2027)
+### Phase 5: Reporting & Renewal (April–June 2027)
 
 **Goal:** Convert first-year relationships into multi-year commitments.
 
@@ -566,7 +568,7 @@ Pre-built document sets for operators who need a full attachments library assemb
 | **Federal Application Package** | Capability Statement + Compliance & Risk Package + DEI Statement + Staffing Plan | $2,800 *(saves $650)* |
 | **Partnership Outreach Package** | MOU/LOI Templates + Rate Card & Benchmarking + Capability Statement | $2,900 *(saves $450)* |
 | **Full Attachments Library** | All supplemental services (9 items) | $7,200 *(saves $650)* |
-| **Complete Grant Readiness Bundle** | All 3 Core Services + Full Attachments Library | **$10,800** *(saves $2,350 vs. individual pricing)* |
+| **Complete Grant Readiness Bundle** | All 3 Core Services + Full Attachments Library | **$10,800** *(saves $2,200 vs. individual pricing)* |
 
 ---
 
@@ -582,12 +584,386 @@ Turnaround times listed are standard. Rush delivery (50% faster) is available at
 
 ---
 
+## Part IX — AI-Powered Grant Discovery: Licensed Access
+
+The grant discovery engine that powers Inward2Onward's daily operations is available as a licensed subscription service to other NMET operators. No other tool on the market is built specifically for the NMET sector.
+
+### Why existing tools fall short for NMET operators
+
+| Tool | Monthly Cost | Problem for NMET |
+|------|-------------|-----------------|
+| Instrumentl | $179–$899 | Built for nonprofits; no NMET-specific filtering; no PARTNERSHIP lane detection |
+| Candid (Foundation Directory) | $100 | Foundation grants only; no federal contracting; no small business set-aside tracking |
+| GrantStation | $58/mo | Curated but static; no daily refresh; no AI relevance scoring |
+| GrantWatch | $29/mo | Generic aggregator; no filtering for WOSB/HUBZone/minority-owned eligibility |
+
+The I2O discovery engine runs daily, filters specifically for NMET-eligible opportunities, and classifies every result across four lanes: MINORITY-OWNED, WOMEN-OWNED, HUBZONE, and PARTNERSHIP.
+
+### What licensed access includes
+
+- **Daily email digest** — curated, AI-scored opportunities delivered each morning, filtered for your state, certification profile, and service population
+- **PARTNERSHIP lane alerts** — federal grants awarded to nonprofits in your service area that create a subcontracting opportunity for your NMET services
+- **Eligibility tagging** — every result tagged to the certifications you hold; you only see what you can actually apply for
+- **Deadline tracking** — open/close dates extracted and flagged; results older than 90 days automatically suppressed
+- **30-day deduplication** — no repeat opportunities across consecutive digests
+- **Monthly digest archive** — searchable log of every opportunity surfaced in the prior 30 days
+
+### Subscription Tiers
+
+| Tier | Monthly | Annual | Included |
+|------|---------|--------|---------|
+| **Standard** | $149/mo | $1,490/yr *(save $298)* | Daily digest, 1 state, 2 certification lanes |
+| **Professional** | $249/mo | $2,490/yr *(save $498)* | Daily digest, 2 states, all 4 lanes, PARTNERSHIP alerts |
+| **Agency** | $449/mo | $4,490/yr *(save $898)* | Professional tier + white-labeled digest for up to 5 of your clients |
+
+*All tiers include a 30-day free trial. No credit card required to start.*
+
+**Competitive context:** The leading sector-agnostic tool (Instrumentl) starts at $179/month and does not filter for WOSB, HUBZone, or PARTNERSHIP opportunities. The I2O Standard tier delivers more relevant results at a lower price because every filter and every query is built for NMET operators specifically.
+
+---
+
+## Part X — Federal Certification Navigation
+
+Most SBA certifications are free to file directly — the cost is the time and error rate. A single rejected 8(a) application means a one-year waiting period before reapplication. A lapsed SAM.gov registration voids your eligibility for all federal awards during the lapse. Inward2Onward offers guided navigation for each certification milestone.
+
+### Certification Services Menu
+
+---
+
+#### SAM.gov Registration & Renewal — $400
+
+Required for every federal grant and contract. Many NMET operators let registrations lapse (annual renewal required) and lose federal eligibility without realizing it.
+
+**Delivers:**
+- Guided walk-through of the SAM.gov Entity Registration process using your specific NAICS codes (485991 — Special Needs Transportation; 485999 — All Other Transit and Ground Passenger Transportation)
+- UEI (Unique Entity Identifier) confirmation
+- Representations and Certifications review — the attestations most operators complete incorrectly
+- Annual renewal reminder system (calendar alert + 60-day pre-lapse notice)
+- Written confirmation memo documenting your active registration details
+
+**Timeline:** 5 business days (SAM.gov processing is separate and typically takes 7–10 business days after submission).
+
+---
+
+#### WOSB / EDWOSB Certification — $900
+
+Women-Owned Small Business and Economically Disadvantaged WOSB certifications are filed through the SBA's [certify.sba.gov](https://certify.sba.gov) portal. The most common rejection reason: documentation packages are incomplete or the ownership/control narrative does not meet the SBA's legal standard.
+
+**Delivers:**
+- Eligibility pre-screen (ownership %, control structure, citizenship, size standard)
+- Document checklist and collection guide (operating agreement, tax returns, personal financial statement, corporate records)
+- Written ownership and control narrative — the most rejection-prone section, drafted to SBA standard
+- Application portal walk-through
+- Response support if the SBA issues a Request for Information (RFI) during review
+
+**Timeline:** 15 business days to prepare; SBA review typically takes 90 days.
+
+---
+
+#### HUBZone Certification — $900
+
+HUBZone certification requires that your principal office be located in a HUBZone census tract AND that at least 35% of your employees reside in a HUBZone. Glendale, AZ qualifies. The challenge is documentation: employee residency must be verified, and the principal office definition is strict.
+
+**Delivers:**
+- HUBZone map confirmation for your principal office address (Glendale, AZ)
+- Employee residency verification guide and template attestation forms
+- Principal office documentation package (lease, utility bills, signage evidence)
+- Application walk-through on [certify.sba.gov](https://certify.sba.gov)
+- Annual recertification reminder (HUBZone status must be maintained — employee turnover can trigger decertification)
+
+**Timeline:** 15 business days to prepare; SBA review typically takes 90 days.
+
+---
+
+#### 8(a) Business Development Application — $2,400
+
+The 8(a) program is the most powerful — and most complex — SBA certification. It unlocks sole-source federal contracts up to $4.5 million in services. The application is 70–100+ hours of work and requires a narrative demonstrating social and economic disadvantage, business potential, and personal character. Error or omission at any point results in denial and a 12-month waiting period.
+
+**Delivers:**
+- Full eligibility assessment (social disadvantage, economic disadvantage, ownership/control, character requirements)
+- Narrative drafting for all required sections: social disadvantage narrative, business plan, program objectives
+- Personal financial statement review and formatting
+- Document package assembly (tax returns, financial statements, bank records, corporate documents, leases)
+- Application submission walk-through on [certify.sba.gov](https://certify.sba.gov)
+- Response support for SBA requests during review (common — typically 2–3 RFIs)
+- Guidance on the annual review process after acceptance
+
+**Timeline:** 25 business days to prepare; SBA review typically takes 90 days.
+
+*Note: The 8(a) application requires your personal tax returns (3 years), business tax returns (3 years), personal financial statement, and a business plan. I2O prepares and assembles; you provide the source documents.*
+
+---
+
+#### Full Certification Stack — $3,800 *(saves $800 vs. individual)*
+
+SAM.gov + WOSB/EDWOSB + HUBZone + 8(a) Application — the complete federal contracting posture for a minority-owned, women-owned NMET operator in Arizona.
+
+| Certification | Individual | Stack |
+|--------------|-----------|-------|
+| SAM.gov Registration | $400 | — |
+| WOSB/EDWOSB | $900 | — |
+| HUBZone | $900 | — |
+| 8(a) Application | $2,400 | — |
+| **Full Stack** | **$4,600** | **$3,800** |
+
+---
+
+## Part XI — Post-Award Grant Management
+
+Winning a grant creates obligations. Federal awards require financial reports, programmatic progress reports, outcome data, and compliance documentation on fixed schedules — typically quarterly and annually. Missing a report is grounds for award termination and disqualification from future funding from that agency.
+
+Inward2Onward offers post-award management at two levels:
+
+---
+
+### Reporting-Only Service — $650 per report
+
+For operators who manage their programs internally but need professional assistance drafting the written reports required by the funder.
+
+**Delivers for each report:**
+- Review of funder's reporting template and requirements
+- Narrative drafting (programmatic progress, challenges, corrective actions, upcoming activities)
+- Data formatting — your ride logs and outcome data organized into the funder's required format
+- Budget variance narrative — explains any deviation from the approved budget
+- Final formatted report ready for submission
+
+**Best for:** Small operators with 1–2 active grants who track their own data but need help translating it into funder-required language.
+
+---
+
+### Full Grant Management Retainer — $1,200/month per active grant
+
+For operators who want ongoing compliance support for the life of the award.
+
+**Delivers monthly:**
+- Report calendar maintenance — tracks all upcoming due dates across active awards
+- Data collection prompts — monthly reminders with the specific data points you need to collect
+- Quarterly progress report drafting and submission support
+- Budget tracking — flags variances before they become audit findings
+- Funder correspondence drafting — responses to program officer questions, modification requests, no-cost extension requests
+- Annual report and close-out package
+
+**Best for:** Operators with $250K+ in active federal awards, or any operator with a SAMHSA, HHS, or DOL award (these agencies have the most demanding reporting requirements).
+
+---
+
+### Grant Management Pricing Summary
+
+| Service | Unit | Investment |
+|---------|------|-----------|
+| Single report (narrative + data formatting) | Per report | $650 |
+| Full management retainer | Per grant/month | $1,200 |
+| Close-out package (final report + audit prep) | Per grant | $1,800 |
+| Audit response support (if federal audit triggered) | Hourly | $185/hr |
+
+*Retainer engagements require a 3-month minimum commitment. Month-to-month thereafter.*
+
+---
+
+## Part XII — Workshop & Cohort Training
+
+For NMET operators who want to build internal grant capacity rather than outsource it entirely. Workshop formats provide the framework, tools, and sector-specific knowledge at a fraction of the full-service engagement cost.
+
+---
+
+### Half-Day Workshop: NMET Grant Readiness Intensive — $495/seat
+
+**Format:** 4 hours, in-person (Glendale, AZ) or virtual  
+**Maximum cohort size:** 10 operators  
+**Minimum to schedule:** 4 registered participants
+
+**What is covered:**
+- The Seliger five-part framework applied to NMET applications (with worked examples)
+- How to read a federal NOFO and identify the sections that determine your score
+- Building your needs statement from public data (AHCCCS, Census, Maricopa County SDOH reports)
+- The PARTNERSHIP lane strategy — how to turn funded nonprofits into customers
+- Grant discovery tools review: how to use the I2O daily digest and other free resources
+- Certification stack overview: which certifications to get first and why
+
+**Each participant receives:**
+- Workshop workbook (fillable PDF)
+- Needs statement data source list (Arizona-specific)
+- NOFO reading checklist
+- 30-day free trial of the I2O Standard discovery digest
+
+---
+
+### Full-Day Workshop: Federal Grant Application Bootcamp — $795/seat
+
+**Format:** 8 hours, in-person (Glendale, AZ) or virtual  
+**Maximum cohort size:** 8 operators  
+**Minimum to schedule:** 4 registered participants
+
+**What is covered:**
+All Half-Day content plus:
+- Live application drafting session — participants begin a real application during the workshop
+- Budget narrative construction (indirect cost, cost-per-ride benchmarking, line-item justification)
+- Sustainability and NICRA strategy
+- Evaluation plan and logic model development
+- Federal contracting basics: SAM.gov, NAICS codes, set-aside navigation
+- Q&A with I2O on active applications and lessons learned
+
+**Each participant receives:**
+- All Half-Day materials plus:
+- Budget narrative template (Excel)
+- Logic model template (fillable PDF)
+- 90-day free trial of the I2O Professional discovery digest
+
+---
+
+### Private Cohort (Custom) — from $3,200
+
+For state associations, MCO networks, or regional NMET operator groups that want a private training session customized to their membership's certification profile and state-specific funding landscape.
+
+**Includes:** Customized curriculum, pre-training needs assessment survey, all participant materials, 60-day follow-up Q&A session by email.  
+**Pricing:** $3,200 base for groups up to 8; $300/additional participant.
+
+---
+
+## Part XIII — Engagement Terms
+
+### Client Qualification
+
+Inward2Onward's services are most effective for NMET operators who meet the following profile. Operators outside this profile are encouraged to start with the Half-Day Workshop or Option C (Grant-Ready Package) before committing to a full engagement.
+
+**Ideal client profile:**
+
+| Criterion | Minimum | Ideal |
+|-----------|---------|-------|
+| Time in operation | 1 year | 3+ years |
+| Annual revenue | $150,000 | $350,000+ |
+| Vehicles in fleet | 3 | 8+ |
+| Certifications held | 0 (willing to pursue) | WOSB or HUBZone |
+| SAM.gov registration | Willing to register | Active |
+| Service area | Single county | Multi-county |
+| Existing nonprofit/agency relationships | 1+ referral source | 3+ active partners |
+
+Operators who are pre-revenue, operating informally, or without a business entity (LLC or corporation) are not yet eligible for the grant opportunities this program targets and should not enroll in a full engagement.
+
+---
+
+### Payment Terms
+
+**One-time services (Parts VIII, X, XI per-report, XII workshops):**
+- 50% due upon engagement confirmation
+- 50% due upon delivery of final deliverables
+- Payment accepted via ACH, check, or credit card
+
+**Monthly retainers (Parts IV, XI retainer):**
+- First month billed in full at engagement start
+- Subsequent months invoiced on the 1st; Net-15
+- Auto-renewal unless 30-day written notice of cancellation is provided
+
+**Annual subscriptions (Part IX discovery agent):**
+- Billed annually in advance or monthly at the rates shown
+- Annual plans are non-refundable after the 30-day free trial period
+- Monthly plans cancel at end of current billing period with no notice required
+
+**Rush delivery premium:** 25% surcharge for deliverables needed in half the standard timeline. Rush requests must be confirmed in writing before work begins.
+
+---
+
+### Scope, Revisions, and Limitations
+
+**What is included in every engagement:**
+- Up to two rounds of revisions on all written deliverables based on client feedback
+- One 60-minute kickoff call and one 60-minute delivery review call per project
+- Email support for clarifying questions during the engagement period
+
+**What is not included:**
+- Attorney review of any document (I2O produces grant-ready drafts; legal review is the client's responsibility)
+- Printing, filing fees, or any costs associated with submitting applications to government agencies
+- NICRA negotiation with the cognizant federal agency (I2O prepares the package; the operator files it)
+- Lobbying or advocacy with elected officials or agency staff
+
+---
+
+### Results Disclaimer and Success Fee Option
+
+Grant consulting is a professional service, not a guarantee of funding. Awards depend on competition, funder priorities, and factors outside any consultant's control. Inward2Onward does not guarantee grant awards.
+
+**What I2O does guarantee:**
+- Deliverables will meet the scope described in this proposal
+- Applications will be technically compliant with the NOFO requirements as of the submission date
+- All written materials will be original, not templated from prior clients, and tailored to your organization
+
+**Success fee option (Full-Service Engagement, Option A only):**  
+Reduce the monthly retainer from $4,750 to $3,325/month (a 30% reduction) in exchange for a 5% success fee on the first-year value of any grant or contract award secured during the engagement period. Success fees are invoiced upon award notification and due within 30 days. This option must be elected at engagement start and cannot be changed mid-engagement.
+
+*Note on success fees: The Association of Fundraising Professionals and Grant Professionals Association both discourage percentage-based fees as the sole compensation model because they can create misaligned incentives. I2O's success fee option is structured as a hybrid — a reduced retainer plus a performance component — to preserve the consultant's independence while sharing upside with the client.*
+
+---
+
+### Confidentiality
+
+A mutual confidentiality agreement is executed at the start of every engagement. Under that agreement:
+
+- I2O will not disclose your organizational data, financial records, client lists, or strategic information to any third party without your written consent.
+- You will not distribute, resell, or share the deliverables produced under this engagement to other NMET operators or consulting firms.
+- I2O retains no copies of personal tax returns, personal financial statements, or banking records after the engagement closes. All client documents are deleted from working storage within 30 days of engagement close.
+- Neither party will use the other's name in marketing materials without prior written approval.
+
+---
+
+### Limitation of Liability
+
+Inward2Onward provides consulting and document preparation services. I2O is not a law firm and does not provide legal advice. All deliverables are professional consulting work product and should be reviewed by your legal counsel before execution of any contract, agreement, or federal submission where legal obligations arise.
+
+**I2O's total liability** for any claim arising from services provided under this engagement is limited to the fees paid by the client for the specific service giving rise to the claim in the 12 months preceding the claim. I2O carries professional liability (errors and omissions) insurance; a certificate of insurance is available upon request.
+
+I2O is not liable for:
+- Grant applications that are rejected, scored below threshold, or not funded
+- Errors introduced after delivery of final documents if the client modifies the deliverable
+- Changes in federal program requirements, NOFO language, or funder priorities that occur after work is delivered
+- Any penalties, disqualifications, or audit findings arising from information the client provided that was inaccurate or incomplete
+
+---
+
+### Termination
+
+Either party may terminate an ongoing retainer engagement for any reason with 30 days written notice. In the event of material breach (failure to pay, failure to provide agreed source documents, or conduct that damages the other party's reputation), the non-breaching party may terminate immediately upon written notice. In the event of immediate termination:
+
+- Work completed to date is invoiced at the rates in this proposal; work not yet begun is not billable.
+- All client materials are returned or deleted within 10 business days.
+- I2O retains the right to describe the engagement in general terms (without naming the client) in its portfolio.
+
+---
+
+## Part XIV — Frequently Asked Questions
+
+**What if we apply and don't win?**  
+Most organizations need 12–18 months and multiple submissions before receiving their first competitive federal grant award. The value of this engagement is not just the first win — it is the grant-ready infrastructure, application library, and funder relationships built along the way. Every submitted application strengthens the next one. We track submission rates, reviewer feedback (when available), and win rates across all clients.
+
+**How long until we see results?**  
+Foundation grants and corporate grants (Amber Grant, Hello Alice, Comcast RISE) can move in 30–90 days. Federal grants typically take 6–12 months from application to award notification. Federal contracts (WOSB set-asides, HUBZone set-asides) can move faster if you respond to active solicitations. A realistic expectation: first award in months 4–8, with compounding results in year 2.
+
+**Do we need to be SAM.gov registered before we start?**  
+You do not need to be registered to begin the Grant-Ready Package (Option C) or the Foundation Documents in Part VIII. You must be registered before submitting any federal grant application or responding to any federal contract solicitation. We recommend beginning SAM.gov registration in Month 1 regardless of which engagement option you choose — the registration process takes 7–10 business days and the annual renewal is easy to forget.
+
+**Can we do this ourselves without a consultant?**  
+Yes, and many operators do. The SBA certifications are free to file directly. The Seliger framework is publicly documented. Federal NOFOs are public documents. The I2O discovery digest is available as a licensed subscription without any consulting engagement. The value of a consulting engagement is speed, precision, and the avoidance of the most common disqualifying errors — not exclusive access to information.
+
+**Do you work with NMET operators outside of Arizona?**  
+The core grant writing and document services (Parts VIII, X, XI) are available to NMET operators in any state. The AHCCCS-specific Medicaid billing pathway in Core Service 1 is Arizona-specific; operators in other states receive a generic Medicaid billing pathway section instead. The discovery agent (Part IX) can be configured for any state. Workshops are available virtually to operators nationwide.
+
+**What makes I2O qualified to offer these services?**  
+Inward2Onward is itself a certified NMET provider operating in Glendale, Arizona — WOSB, minority-owned, and HUBZone eligible. Every service in this proposal reflects a document, system, or process that I2O built for its own grant applications. We are not a generic grant consulting firm that serves any nonprofit; we are an NMET operator that built a grant infrastructure and is now making it available to peers. That is a different and more specific credential.
+
+**What happens if our situation changes mid-engagement?**  
+Monthly retainer clients may pause an engagement with 30 days written notice. The pause period can last up to 90 days, after which the engagement resumes or closes. One-time project deliverables already in progress are billed at the percentage of completion at the time of cancellation. Annual subscriptions are non-refundable after the trial period.
+
+**How do you handle confidential financial information?**  
+Documents containing personal or business financial information (tax returns, bank statements, personal financial statements) are handled under a standard confidentiality agreement executed at engagement start. I2O does not retain copies of client tax returns or personal financial statements after the engagement closes. All working documents are stored in a client-specific folder with restricted access.
+
+---
+
 ## Next Steps
 
-1. **Confirm engagement option** (A, B, or C above) or select individual services from Part VIII
-2. **Schedule kickoff meeting** — review current certifications, compile operational data, identify top 5 partnership targets
-3. **Activate SAM.gov registration** if not current — required for all federal applications
-4. **Pull the first week's digest** from the discovery agent — score opportunities together and select first 2 applications
+1. **Confirm engagement option** — Full Service (A), Targeted Sprint (B), Grant-Ready Package (C), or individual services from Parts VIII–XII
+2. **Schedule a 30-minute discovery call** — review your certifications, fleet size, current revenue, and target grant lanes to confirm fit and sequence
+3. **Activate SAM.gov registration** if not current — required for all federal applications; takes 7–10 business days after submission
+4. **Start the 30-day free trial** of the AI discovery digest — no commitment; see what is being funded in your lane right now
+5. **Select your first two applications** — from the first week's digest, score opportunities together and assign the applications that have the strongest fit and closest deadline
 
 ---
 
