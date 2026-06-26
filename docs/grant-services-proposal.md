@@ -438,9 +438,153 @@ Every application uses the same five-part framework: Needs → Program Design �
 
 ---
 
+## Part VIII — Grant Readiness Services for NMET Operators
+
+Inward2Onward offers a structured set of grant readiness services to other Non-Medical Emergency Transportation companies seeking federal and foundation funding. These services reflect hard-won operational knowledge: the same gaps that disqualify applications from the outside are the ones I2O has built repeatable systems to close.
+
+Services are available à la carte or bundled. All deliverables are written, formatted, and ready to attach to any federal NOFO response or foundation application.
+
+---
+
+### Core Services (Priority Tier)
+
+These three services address the most common reasons NMET applications are scored down or rejected by federal program officers. They are offered as standalone engagements or as a packaged foundation for any grant campaign.
+
+---
+
+#### Core Service 1 — Sustainability & Continuity Plan
+
+**What it is:**
+A written sustainability plan that answers the question every federal funder requires you to answer: *How does this program continue after the grant period ends?* Without this document, applications for SAMHSA, HHS, HUD, DOL, and most foundation grants score below the funding threshold regardless of program quality.
+
+**What Inward2Onward delivers:**
+
+- **Revenue diversification analysis** — maps your current income streams (Medicaid broker subcontracts, fee-for-service, private pay) against your program cost structure and identifies the gap the grant is intended to bridge
+- **Post-grant continuity narrative** — a 2-page written plan describing how operations continue at the end of the grant period: which costs convert to contract revenue, which partnerships become recurring billing relationships, and which activities reduce in scope rather than disappear
+- **Fee-for-service projection model** — a simple spreadsheet model showing per-ride revenue at break-even, growth, and reduced-funding scenarios
+- **Medicaid/AHCCCS billing pathway** (Arizona-specific) — documents the enrollment steps and timeline to bill directly through AHCCCS managed care organizations as a non-Medicaid funded NMET provider converts to a Medicaid credentialed provider
+- **Funder-ready language** — a 300–500 word sustainability section formatted for insertion into any grant application
+
+**Who needs this:**
+Any NMET operator applying for a federal grant of $100K or more for the first time. Required attachment for SAMHSA, HUD, ACL, and most DOL NOFOs.
+
+**Deliverable:** One complete sustainability package (narrative + projection model + funder-ready insert).  
+**Timeline:** 10 business days.  
+**Investment: $1,800**
+
+---
+
+#### Core Service 2 — NICRA Establishment & Indirect Cost Strategy
+
+**What it is:**
+A Negotiated Indirect Cost Rate Agreement (NICRA) is the document your organization files with its cognizant federal agency to establish an official indirect cost rate — the percentage of direct costs you are permitted to recover for administrative overhead on federal awards. Without a NICRA, federal applicants are limited to the **10% de minimis rate** (or whatever the NOFO allows), often leaving significant overhead unrecovered. With a properly filed NICRA, rates of 20–40% are common for small transportation operators.
+
+**What Inward2Onward delivers:**
+
+- **Indirect cost rate analysis** — reviews your actual cost structure (administrative staff time, facility, insurance, technology, vehicle depreciation) against your direct program expenses and calculates a defensible proposed rate
+- **Rate election decision memo** — a written recommendation on whether to pursue a NICRA with your cognizant federal agency or elect the 10% de minimis rate, with financial impact modeled over a 12-month grant period at three award sizes ($100K, $250K, $500K)
+- **NICRA preparation package** — organizes your financial data into the format required by your cognizant federal agency (typically HHS Division of Cost Allocation for social service providers), including a cost allocation methodology narrative and the rate proposal form
+- **Submission guidance** — step-by-step instructions for submitting to the correct federal office, expected timeline (typically 6–9 months for first-time applicants), and how to claim the de minimis rate in the interim
+- **Budget narrative language** — standardized text that correctly references your NICRA or de minimis election in any grant application budget section
+
+**Who needs this:**
+Any NMET operator planning to apply for two or more federal grants totaling $200K+ in a 12-month period. One approved NICRA applies to all federal awards going forward.
+
+**Deliverable:** Rate analysis, election memo, preparation package, and budget narrative language.  
+**Timeline:** 15 business days.  
+**Investment: $2,400**
+
+*Note: NICRA submission to the federal agency and negotiation is a separate process handled directly between your organization and the cognizant agency. I2O prepares the package; the operator files it.*
+
+---
+
+#### Core Service 3 — Rate Card Development & Market Benchmarking
+
+**What it is:**
+The single most important document for the PARTNERSHIP lane and for every federal contract bid: a written rate card that documents your actual cost per ride against published industry benchmarks. Without it, budget reviewers have no basis to evaluate your pricing. With it, you become the lowest-cost, most defensible option in the room.
+
+**What Inward2Onward delivers:**
+
+- **Operational cost-per-ride calculation** — works from your actual fuel, driver labor, vehicle depreciation, insurance, and dispatch costs to calculate your all-in cost per one-way trip by vehicle type (standard sedan, wheelchair-accessible van, stretcher van) and distance band (0–5 miles, 5–15 miles, 15–30 miles, 30+ miles)
+- **Industry benchmark comparison** — compares your rates against:
+  - Medicaid NEMT broker reimbursement rates in Arizona (AHCCCS published rates)
+  - National NMET average ($28–$45 per one-way trip, varying by vehicle class)
+  - Lyft/Uber Health and similar network rates for non-accessible trips
+  - VA Non-Emergency Transportation reimbursement schedule
+- **Published rate card document** — a clean, one-page rate card formatted for attachment to grant applications, subcontract proposals, and nonprofit partnership outreach materials
+- **Budget narrative justification** — a 200-word paragraph that correctly references the benchmark comparison to justify your rates in any federal grant budget
+- **Competitive positioning summary** — a one-paragraph statement, ready to paste into any grant application's Organizational Capacity section, explaining your cost advantage relative to competitors
+
+**Who needs this:**
+Any NMET operator pursuing PARTNERSHIP subcontracts, federal contracts, or any grant requiring a detailed budget narrative. Required for VA, CMS, DOT, and most managed care subcontracts.
+
+**Deliverable:** Cost analysis model, rate card document, benchmark comparison, and budget narrative language.  
+**Timeline:** 10 business days.  
+**Investment: $1,600**
+
+---
+
+#### Core Services Bundle — All Three
+
+| Service | Individual | Bundled |
+|---------|-----------|---------|
+| Sustainability & Continuity Plan | $1,800 | — |
+| NICRA Establishment Package | $2,400 | — |
+| Rate Card & Market Benchmarking | $1,600 | — |
+| **Bundle (all three)** | **$5,800** | **$4,500** |
+
+*Bundle saves $1,300 and delivers a complete federal grant readiness foundation in 20 business days.*
+
+---
+
+### Supplemental Services
+
+The following services address the remaining compliance, documentation, and positioning gaps that arise after initial applications are submitted or when federal contract requirements escalate. Each is priced as a standalone deliverable.
+
+---
+
+| Service | Description | Deliverable | Investment |
+|---------|-------------|-------------|-----------|
+| **Compliance & Risk Package** | HIPAA compliance statement, ADA vehicle accessibility documentation template, driver background check policy, and liability insurance requirements summary formatted for federal attachments | 4-section compliance binder ready for NOFO attachments | $1,400 |
+| **DEI/DEIA Statement** | Written organizational diversity statement tied to I2O's minority-owned, women-owned, and HUBZone certifications; formatted for 2026 federal NOFO requirements | 300-word statement, two versions (short/long) | $600 |
+| **Capability Statement** | One-page federal-format capability statement: NAICS codes, UEI/SAM, certifications, past performance, differentiators, and contact block | Print-ready PDF, Word editable version | $750 |
+| **MOU / LOI Templates** | Memorandum of Understanding and Letter of Intent template set for NMET subcontract partnerships with nonprofits and agencies; covers scope, referral protocol, billing, and reporting | 2 templates (MOU + LOI), Word editable | $900 |
+| **Staffing Plan & Org Chart** | Organizational chart showing grant management roles with percent FTE and reporting lines; written staffing narrative for the Organizational Capacity section | Chart + 400-word narrative | $700 |
+| **Geographic Service Map** | Map of service area by zip code with HUBZone overlay, population density, and transportation gap indicators; sourced from Census and AHCCCS public data | One print-ready map, narrative description | $850 |
+| **Competitor Landscape Analysis** | Review of other NMET providers operating in your service area: certifications held, known contracts, gaps in coverage; positions your differentiators | 2-page analysis + talking points | $1,100 |
+| **Grant Deadline Calendar** | 12-month calendar of open/close dates for all priority opportunities in your grant target lanes, populated from the discovery agent's archive | Shared Google Sheet + PDF version | $500 |
+| **Data Security Plan** | Written data security policy covering PHI handling, ride record retention, HIPAA breach response, and system access controls; required by SAMHSA, HRSA, and most behavioral health NOFOs | 3-page policy document, funder-ready | $950 |
+
+---
+
+### Supporting Document Packages
+
+Pre-built document sets for operators who need a full attachments library assembled at once.
+
+| Package | Included Services | Investment |
+|---------|-----------------|-----------|
+| **Federal Application Package** | Capability Statement + Compliance & Risk Package + DEI Statement + Staffing Plan | $2,800 *(saves $650)* |
+| **Partnership Outreach Package** | MOU/LOI Templates + Rate Card & Benchmarking + Capability Statement | $2,900 *(saves $450)* |
+| **Full Attachments Library** | All supplemental services (9 items) | $7,200 *(saves $650)* |
+| **Complete Grant Readiness Bundle** | All 3 Core Services + Full Attachments Library | **$10,800** *(saves $2,350 vs. individual pricing)* |
+
+---
+
+### How These Services Are Delivered
+
+All services are delivered remotely. Inward2Onward works from your operational data, existing documents, and a 60-minute intake call per service. Final deliverables are provided as:
+
+- **Word/Google Docs** — editable, attorney-reviewable, and reusable across multiple applications
+- **PDF** — formatted for federal NOFO attachment requirements
+- **Plain-text inserts** — copy-paste ready for online application portals
+
+Turnaround times listed are standard. Rush delivery (50% faster) is available at a 25% premium.
+
+---
+
 ## Next Steps
 
-1. **Confirm engagement option** (A, B, or C above)
+1. **Confirm engagement option** (A, B, or C above) or select individual services from Part VIII
 2. **Schedule kickoff meeting** — review current certifications, compile operational data, identify top 5 partnership targets
 3. **Activate SAM.gov registration** if not current — required for all federal applications
 4. **Pull the first week's digest** from the discovery agent — score opportunities together and select first 2 applications
