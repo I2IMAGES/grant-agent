@@ -26,10 +26,6 @@ RSS_FEEDS = [
 
     # Philanthropy and foundation news
     ("Philanthropy News Digest - RFPs",    "https://philanthropynewsdigest.org/rfps.rss"),
-    ("GrantSpace / Candid News",           "https://candid.org/news/rss"),
-
-    # Arizona-specific
-    ("AZ Governor's Office of Economic Opportunity", "https://opportunity.az.gov/feed/"),
 ]
 
 # Only include items published within this many days
@@ -57,6 +53,7 @@ def _parse_date(entry) -> datetime | None:
 
 def _fetch_feed(label: str, url: str, cutoff: datetime) -> list[dict]:
     results = []
+    skipped_old = 0
     try:
         resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
         resp.raise_for_status()
@@ -65,6 +62,7 @@ def _fetch_feed(label: str, url: str, cutoff: datetime) -> list[dict]:
         for entry in feed.entries:
             pub_date = _parse_date(entry)
             if pub_date and pub_date < cutoff:
+                skipped_old += 1
                 continue  # too old
 
             title = entry.get("title", "").strip()
@@ -84,6 +82,9 @@ def _fetch_feed(label: str, url: str, cutoff: datetime) -> list[dict]:
                 "snippet": summary[:500],
                 "source_query": "rss: {}".format(label),
             })
+        if skipped_old:
+            logger.info("rss_sources: %r skipped %d entries older than %d days",
+                        label, skipped_old, RECENCY_DAYS)
     except Exception as e:
         logger.warning("rss_sources: failed to fetch %r (%s): %s", label, url, e)
 
