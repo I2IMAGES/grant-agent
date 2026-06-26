@@ -1,11 +1,38 @@
 # Grant Development Services Proposal
-## Inward2Onward LLC — 6 to 12 Month Engagement
+## Inward2Onward LLC — NMET Operator Services
 
 **Prepared by:** Inward2Onward LLC  
-**Prepared for:** Internal Planning / Prospective Funding Partners  
+**Prepared for:** NMET Operators Seeking Federal and Foundation Funding  
 **Date:** June 2026  
-**Service Period:** July 2026 – June 2027  
-**Contact:** EJ | ej@inward2onward.com | 623.272.8066
+**Service Period:** Engagements begin rolling monthly  
+**Contact:** EJ | [ej@inward2onward.com](mailto:ej@inward2onward.com) | 623.272.8066
+
+---
+
+## Table of Contents
+
+| Section | Title |
+|---------|-------|
+| Executive Summary | Program overview |
+| Part I | The Opportunity |
+| Part II | The Seliger Framework Applied |
+| Part III | 12-Month Engagement Plan |
+| Part IV | Engagement Investment (Options A, B, C) |
+| Part V | Grant Target Summary by Lane |
+| Part VI | Success Metrics |
+| Part VII | Why This Works |
+| Part VIII | Grant Readiness Services for NMET Operators |
+| Part IX | AI-Powered Grant Discovery: Licensed Access |
+| Part X | Federal Certification Navigation |
+| Part XI | Post-Award Grant Management |
+| Part XII | Workshop & Cohort Training |
+| Part XIII | Engagement Terms |
+| Part XIV | Frequently Asked Questions |
+| Part XV | Master Pricing Reference |
+| Part XVI | Referral Program |
+| Appendix A | Arizona Data Sources for Needs Statements |
+| Appendix B | Sample NMET Logic Model |
+| Signature Page | Engagement confirmation |
 
 ---
 
@@ -296,7 +323,7 @@ This track runs parallel to grant applications but requires different positionin
 | DOT DBE subcontracting | State DOT projects | DBE certification + minority-owned |
 | CMS Access to Care transportation | CMS / FQHC partnerships | Healthcare setting, HIPAA compliant |
 
-**Action required:** Register with SAM.gov (free), confirm active DUNS/UEI, maintain current certifications. The discovery agent will surface relevant solicitations daily via the HUBZONE lane.
+**Action required:** Register with [SAM.gov](https://sam.gov) (free), confirm active DUNS/UEI, maintain current certifications. The discovery agent will surface relevant solicitations daily via the HUBZONE lane.
 
 ---
 
@@ -957,15 +984,305 @@ Documents containing personal or business financial information (tax returns, ba
 
 ---
 
+---
+
+## Part XV — Master Pricing Reference
+
+A complete summary of every service and engagement option. Use this as a one-page reference when selecting services.
+
+### Engagement Options (Full-Service)
+
+| Option | Duration | Monthly | Total |
+|--------|----------|---------|-------|
+| A — Full Service | 12 months | $4,750 | $57,000 |
+| A — Success Fee variant | 12 months | $3,325 + 5% of awards | Variable |
+| B — Targeted Sprint | 6 months | $2,400 | $14,400 |
+| C — Grant-Ready Package | One-time | — | $4,000 |
+
+---
+
+### Core Grant Readiness Services (Part VIII)
+
+| Service | Price |
+|---------|-------|
+| Sustainability & Continuity Plan | $1,800 |
+| NICRA Establishment Package | $2,400 |
+| Rate Card & Market Benchmarking | $1,600 |
+| **Core Services Bundle (all three)** | **$4,500** *(saves $1,300)* |
+
+---
+
+### Supplemental Document Services (Part VIII)
+
+| Service | Price |
+|---------|-------|
+| Compliance & Risk Package | $1,400 |
+| DEI/DEIA Statement | $600 |
+| Capability Statement | $750 |
+| MOU / LOI Templates | $900 |
+| Staffing Plan & Org Chart | $700 |
+| Geographic Service Map | $850 |
+| Competitor Landscape Analysis | $1,100 |
+| Grant Deadline Calendar | $500 |
+| Data Security Plan | $950 |
+
+---
+
+### Supplemental Document Bundles (Part VIII)
+
+| Bundle | Included | Price |
+|--------|---------|-------|
+| Federal Application Package | Capability Statement + Compliance & Risk + DEI + Staffing Plan | $2,800 *(saves $650)* |
+| Partnership Outreach Package | MOU/LOI Templates + Rate Card + Capability Statement | $2,900 *(saves $450)* |
+| Full Attachments Library | All 9 supplemental services | $7,200 *(saves $650)* |
+| **Complete Grant Readiness Bundle** | Core Services Bundle + Full Attachments Library | **$10,800** *(saves $2,200)* |
+
+---
+
+### AI Discovery Digest (Part IX)
+
+| Tier | Monthly | Annual |
+|------|---------|--------|
+| Standard (1 state, 2 lanes) | $149 | $1,490 *(save $298)* |
+| Professional (2 states, all lanes) | $249 | $2,490 *(save $498)* |
+| Agency (white-labeled, up to 5 clients) | $449 | $4,490 *(save $898)* |
+
+*30-day free trial on all tiers. No credit card required.*
+
+---
+
+### Federal Certification Navigation (Part X)
+
+| Service | Price |
+|---------|-------|
+| SAM.gov Registration & Renewal | $400 |
+| WOSB / EDWOSB Certification | $900 |
+| HUBZone Certification | $900 |
+| 8(a) Business Development Application | $2,400 |
+| **Full Certification Stack (all four)** | **$3,800** *(saves $800)* |
+
+---
+
+### Post-Award Grant Management (Part XI)
+
+| Service | Unit | Price |
+|---------|------|-------|
+| Single progress report | Per report | $650 |
+| Full management retainer | Per grant/month | $1,200 |
+| Close-out package | Per grant | $1,800 |
+| Audit response support | Per hour | $185 |
+
+---
+
+### Workshops (Part XII)
+
+| Format | Price |
+|--------|-------|
+| Half-Day Grant Readiness Intensive | $495/seat |
+| Full-Day Federal Grant Bootcamp | $795/seat |
+| Private Cohort (custom) | From $3,200 |
+
+---
+
+## Part XVI — Referral Program
+
+Inward2Onward pays referral fees to anyone who introduces a qualified NMET operator that becomes a paying client.
+
+### How it works
+
+1. You refer an NMET operator to I2O (email introduction to ej@inward2onward.com).
+2. The referred operator completes a discovery call and purchases any service valued at $1,000 or more.
+3. I2O pays the referral fee within 30 days of the referred client's first payment clearing.
+
+### Referral Fee Schedule
+
+| Referred client's first engagement value | Your referral fee |
+|------------------------------------------|------------------|
+| $1,000 – $4,999 | $200 |
+| $5,000 – $14,999 | $500 |
+| $15,000 – $57,000 | $1,000 |
+| Full 12-month engagement (Option A) | $2,500 |
+
+### Eligible referrers
+
+Anyone may refer — other NMET operators, nonprofit program directors, SBDC advisors, Medicaid MCO staff, SBA resource partners, or transportation association members. There is no limit to the number of referrals you can make or the total fees you can earn.
+
+### Terms
+
+- Referral fees are paid only for new clients (organizations with no prior engagement with I2O).
+- The referring party must be identified in the initial introduction email.
+- If a referred prospect was already in I2O's pipeline prior to introduction, no fee is owed.
+- Referral fees are reported on a 1099 if total annual payments exceed $600.
+
+---
+
+## Appendix A — Arizona Data Sources for Needs Statements
+
+Every federal grant application requires a documented needs statement grounded in publicly available data. The following sources are free, current, and directly relevant to NMET applications in Arizona.
+
+### Transportation Barrier Data
+
+| Source | What it provides | URL |
+|--------|-----------------|-----|
+| AHCCCS Member Data | Arizona Medicaid enrollment by county, population, and eligibility category | [azahcccs.gov](https://www.azahcccs.gov/Resources/Downloads/PopulationStatistics/) |
+| Maricopa County CHNA | Community Health Needs Assessment — transportation barriers to care | [maricopa.gov/health](https://www.maricopa.gov/2858/Community-Health-Needs-Assessment) |
+| Arizona Health Matters | County-level social determinants of health, transportation access indicators | [arizonahealthmatters.org](https://www.arizonahealthmatters.org) |
+| Census Bureau ACS | Household vehicle access by zip code, poverty rate, disability prevalence | [data.census.gov](https://data.census.gov) |
+| ADOT State Transportation Improvement Program | Gaps in transit coverage by region | [azdot.gov](https://azdot.gov/planning/transportation-plans/state-transportation-improvement-program) |
+
+### Behavioral Health & Substance Abuse Data
+
+| Source | What it provides | URL |
+|--------|-----------------|-----|
+| SAMHSA NSDUH | State-level substance use disorder prevalence and treatment gap estimates | [samhsa.gov/data](https://www.samhsa.gov/data/) |
+| Arizona Health Information Network (AHIN) | Behavioral health utilization, no-show rates, ED diversion data | [azdhs.gov](https://www.azdhs.gov/prevention/health-data-statistics/) |
+| AHCCCS Behavioral Health Data | Arizona Medicaid behavioral health enrollment and service utilization | [azahcccs.gov/BH](https://www.azahcccs.gov/AHCCCS/Initiatives/BehavioralHealth/) |
+| National Academy of Sciences (2019) | "Accounting for Social Risk Factors in Medicare Payment" — transportation statistics | [nap.edu](https://www.nap.edu/catalog/25016) |
+
+### Workforce & Economic Data
+
+| Source | What it provides | URL |
+|--------|-----------------|-----|
+| Arizona Commerce Authority | Small business demographics, MWBE data, economic development priorities | [azcommerce.com](https://www.azcommerce.com) |
+| BLS Local Area Unemployment Statistics | County-level unemployment and labor force participation | [bls.gov/lau](https://www.bls.gov/lau/) |
+| HUD CPD Maps | HUBZone and Opportunity Zone boundaries, low-income census tracts | [hudgis-hud.opendata.arcgis.com](https://hudgis-hud.opendata.arcgis.com) |
+| SBA HUBZone Map | Official HUBZone census tract lookup | [maps.certify.sba.gov](https://maps.certify.sba.gov/hubzone/map) |
+
+### How to use these sources in a needs statement
+
+A strong needs statement layers three tiers of data in this order:
+
+1. **National scope** — establishes that the problem is real and documented (use NAS, SAMHSA national data)
+2. **Arizona/county specificity** — shows the problem exists where you operate (use AHCCCS, Maricopa CHNA, Arizona Health Matters)
+3. **Your organization's data** — proves your organization is positioned to address it (use your own ride logs, no-show rescue rate, referring agency list)
+
+The gap statement closes the section: *"Despite [X] individuals in Maricopa County facing transportation barriers to [service type], only [Y] dedicated NMET providers serve the area. Funding from [funder] would enable Inward2Onward to serve [Z] additional clients annually."*
+
+---
+
+## Appendix B — Sample NMET Logic Model
+
+A logic model is required in most SAMHSA, HHS, and DOL applications. It is a one-page diagram showing how your inputs and activities produce measurable outcomes. The following is a completed sample for an NMET program serving behavioral health clients.
+
+**Program:** NMET Access for Behavioral Health Treatment Participants  
+**Funder target:** SAMHSA NOFO, Substance Use Prevention, Treatment, and Recovery Services  
+**Population:** Adults referred by AHCCCS-funded behavioral health providers in Maricopa County
+
+---
+
+### Logic Model
+
+| Column | Content |
+|--------|---------|
+| **INPUTS** (What we invest) | Grant funding ($X); 4 drivers (2.0 FTE); 3 vehicles (1 ADA-accessible van, 2 sedans); dispatch software; MOUs with 3 behavioral health clinics; I2O's existing operating infrastructure |
+| **ACTIVITIES** (What we do) | Schedule and confirm rides ≥24 hours in advance; provide transportation to scheduled treatment appointments; send pre-ride reminder calls; document trip completion; collect client satisfaction data monthly; submit ride logs to partner agencies monthly |
+| **OUTPUTS** (Countable results) | 2,400 one-way trips completed annually; 200 unique clients served; 95% on-time performance rate; 12 monthly reports submitted to partner agencies |
+| **SHORT-TERM OUTCOMES** (0–6 months) | Treatment appointment kept rate increases from baseline (estimated 58%) to 80%+; no-show rate decreases by 35% among transportation-enrolled clients; client satisfaction score ≥4.2/5.0 |
+| **INTERMEDIATE OUTCOMES** (6–18 months) | 30-day treatment retention rate increases by 20 percentage points among enrolled clients; 60-day retention increases by 15 percentage points; emergency department visits decrease for enrolled population |
+| **LONG-TERM OUTCOMES** (18+ months) | Sustained reduction in substance use disorder relapse rates; increased employment among program completers; reduced Medicaid cost-per-member for enrolled population |
+| **EXTERNAL FACTORS** (Assumptions) | Partner agencies maintain active referral pipelines; AHCCCS reimbursement rates remain stable; clients have valid government ID for driver verification; drivers maintain required certifications |
+
+---
+
+### How to adapt this model
+
+- **For workforce development programs:** Replace "treatment appointment" with "job training session"; replace "relapse" outcomes with "employment placement" outcomes; cite DOL TEGL guidance on transportation as a barrier to workforce participation
+- **For senior services programs:** Replace behavioral health partner agencies with Area Agency on Aging or FQHC partners; add ADA vehicle capacity as an input; reference ACL data on transportation and social isolation
+- **For housing/homelessness programs:** Replace clinical outcomes with housing stability metrics; add "referral to permanent housing" as an intermediate outcome; cite HUD HEARTH Act transportation provisions
+
+---
+
 ## Next Steps
 
 1. **Confirm engagement option** — Full Service (A), Targeted Sprint (B), Grant-Ready Package (C), or individual services from Parts VIII–XII
 2. **Schedule a 30-minute discovery call** — review your certifications, fleet size, current revenue, and target grant lanes to confirm fit and sequence
-3. **Activate SAM.gov registration** if not current — required for all federal applications; takes 7–10 business days after submission
+3. **Activate [SAM.gov](https://sam.gov) registration** if not current — required for all federal applications; takes 7–10 business days after submission
 4. **Start the 30-day free trial** of the AI discovery digest — no commitment; see what is being funded in your lane right now
 5. **Select your first two applications** — from the first week's digest, score opportunities together and assign the applications that have the strongest fit and closest deadline
 
 ---
 
-*Inward2Onward LLC | Glendale, AZ | ej@inward2onward.com | 623.272.8066*  
+## Signature Page
+
+This page confirms the scope, investment, and terms of an engagement between Inward2Onward LLC and the undersigned client organization. By signing below, both parties agree to the services described in this proposal and the engagement terms in Part XIII.
+
+---
+
+**Client Organization**
+
+Organization Name: _______________________________________________
+
+Primary Contact Name: _______________________________________________
+
+Title: _______________________________________________
+
+Address: _______________________________________________
+
+Email: _______________________________________________
+
+Phone: _______________________________________________
+
+---
+
+**Selected Engagement Option** *(circle one)*
+
+&nbsp;&nbsp;&nbsp;&nbsp;Option A — Full Service 12-Month Engagement &nbsp;&nbsp;&nbsp; $4,750/month
+
+&nbsp;&nbsp;&nbsp;&nbsp;Option A (Success Fee variant) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3,325/month + 5% of awards
+
+&nbsp;&nbsp;&nbsp;&nbsp;Option B — Targeted 6-Month Sprint &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2,400/month
+
+&nbsp;&nbsp;&nbsp;&nbsp;Option C — Grant-Ready Package (one-time) &nbsp;&nbsp; $4,000
+
+&nbsp;&nbsp;&nbsp;&nbsp;À la carte services — see attached service list
+
+---
+
+**Additional services selected** *(list by part and service name):*
+
+_______________________________________________
+
+_______________________________________________
+
+_______________________________________________
+
+---
+
+**Engagement Start Date:** _______________________________________________
+
+**Total First-Month Investment:** $ _______________________________________________
+
+*(50% due upon signature; 50% due upon delivery of first deliverables or at month-end for retainers)*
+
+---
+
+**Inward2Onward LLC**
+
+Authorized Signature: _______________________________________________
+
+Name: EJ
+
+Title: Founder & CEO
+
+Date: _______________________________________________
+
+---
+
+**Client Organization**
+
+Authorized Signature: _______________________________________________
+
+Name: _______________________________________________
+
+Title: _______________________________________________
+
+Date: _______________________________________________
+
+---
+
+*Both parties retain a fully executed copy of this agreement. A copy of I2O's certificate of professional liability insurance is available upon request.*
+
+---
+
+*Inward2Onward LLC | Glendale, AZ | [ej@inward2onward.com](mailto:ej@inward2onward.com) | 623.272.8066*  
 *Minority-Owned · Women-Owned · HUBZone Eligible*
