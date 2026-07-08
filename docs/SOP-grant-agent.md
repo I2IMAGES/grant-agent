@@ -244,6 +244,7 @@ All secrets are stored in **GitHub → Settings → Secrets and variables → Ac
 | `RESEND_API_KEY` | Yes | Resend.com API key for email delivery |
 | `RECIPIENT_EMAIL` | Yes | Email address(es) to receive the digest |
 | `SAM_GOV_API_KEY` | No | SAM.gov free API key — skipped if not set. Register at sam.gov/profile/Details |
+| `GRANTS_GOV_PROXY_URL` | No | Cloudflare Worker URL that proxies requests to api.grants.gov. GitHub Actions runner IPs are blocked by Grants.gov; this routes around the block. See §Grants.gov Proxy below. |
 
 **To rotate a secret:** Go to GitHub repo → Settings → Secrets → click the secret → Update.
 
@@ -636,6 +637,144 @@ The PARTNERSHIP lane is designed around this business logic:
 | Housing / homelessness services | HUD | Transport to shelters and appointments |
 | Refugee resettlement | ORR, State Dept | Transport to schools, agencies, jobs |
 | Community health / healthcare access | HRSA, FQHC | Transport to clinics and pharmacies |
+
+---
+
+---
+
+## Appendix C: Grants.gov Proxy Setup
+
+GitHub Actions runner IPs (hosted on Azure/AWS data centers) are blocked by `api.grants.gov` with a 403 Forbidden response. The fix is to route the 5 daily Grants.gov API calls through a Cloudflare Worker, which runs on Cloudflare's IP range and is not blocked.
+
+### Why Cloudflare Workers
+
+- **Free tier** — 100,000 requests/day; the agent uses 5/day
+- **No server to maintain** — serverless, always on
+- **Sub-10ms overhead** — Cloudflare edge is fast
+- **Cloudflare IPs are not blocked** by Grants.gov
+
+---
+
+### Step 1 — Create a Cloudflare account
+
+Go to [cloudflare.com](https://cloudflare.com) → Sign Up → Free plan. No credit card required for the Workers free tier.
+
+---
+
+### Step 2 — Create the Worker
+
+1. In the Cloudflare dashboard, go to **Workers & Pages** → **Create** → **Create Worker**
+2. Name it `grants-gov-proxy`
+3. Click **Deploy**
+4. Click **Edit Code** and replace all contents with:
+
+```javascript
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // Only proxy POST requests to /v2/api/ — block everything else
+    if (request.method !== "POST" || !url.pathname.startsWith("/v2/api/")) {
+      return new Response("Not found", { status: 404 });
+    }
+
+    const target = "https://api.grants.gov" + url.pathname + url.search;
+
+    const proxied = new Request(target, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0",
+      },
+      body: request.body,
+    });
+
+    const resp = await fetch(proxied);
+    return new Response(resp.body, {
+      status: resp.status,
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
+```
+
+5. Click **Save and Deploy**
+6. Copy the Worker URL — it looks like:  
+   `https://grants-gov-proxy.YOUR-SUBDOMAIN.workers.dev`
+
+---
+
+### Step 3 — Add the secret to GitHub Actions
+
+1. In the `i2images/grant-agent` repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
+2. Name: `GRANTS_GOV_PROXY_URL`
+3. Value: your Worker URL (e.g. `https://grants-gov-proxy.abc123.workers.dev`)
+4. Click **Add secret**
+
+---
+
+### Step 4 — Verify it's working
+
+On the next scheduled run (or trigger a manual run), the logs should show:
+
+```
+federal_sources: N results from grants.gov
+```
+
+instead of the previous:
+
+```
+grants.gov search failed for '...': 403 Client Error: Forbidden
+```
+
+If you still see 403 after adding the proxy, check the Worker's **Logs** tab in the Cloudflare dashboard to confirm requests are arriving. If they are but Grants.gov is still returning 403, Grants.gov may have also blocked Cloudflare's IP range in your region — in that case, use Option B below.
+
+---
+
+### Option B — Self-Hosted VPS Proxy (Fallback)
+
+If Cloudflare Workers also gets blocked, spin up a $6/month VPS with a static residential-class IP:
+
+**Providers:** DigitalOcean Droplet, Linode Nanode, Vultr Cloud Compute (all ~$6/month)
+
+**On the VPS, install a simple HTTP proxy:**
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install -y tinyproxy
+sudo sed -i 's/^Allow 127.0.0.1/Allow 0.0.0.0/' /etc/tinyproxy/tinyproxy.conf
+sudo systemctl restart tinyproxy
+```
+
+**Add to GitHub Actions secrets:**
+- Name: `HTTPS_PROXY`
+- Value: `http://YOUR_VPS_IP:8888`
+
+The `requests` library in Python automatically uses `HTTPS_PROXY` if it is set in the environment — no code changes required.
+
+**Note:** A self-hosted VPS requires monthly payment and occasional OS maintenance. Cloudflare Workers is preferred for a zero-maintenance setup.
+
+---
+
+### Option C — GitHub Actions Self-Hosted Runner (Most Reliable)
+
+If you have a computer at the I2O office with a residential internet connection, you can run the GitHub Actions job on that machine instead of GitHub's hosted runners. Residential IPs are not blocked by Grants.gov.
+
+**Steps:**
+1. In the repository → **Settings** → **Actions** → **Runners** → **New self-hosted runner**
+2. Follow the installation instructions for your OS (Linux/macOS/Windows)
+3. In `.github/workflows/daily_grant_run.yml`, change:
+   ```yaml
+   runs-on: ubuntu-latest
+   ```
+   to:
+   ```yaml
+   runs-on: self-hosted
+   ```
+4. The runner must be online at 7 AM MST daily for the cron to execute
+
+**Tradeoff:** Zero proxy cost and the most reliable IP solution, but the office computer must be on and connected. A dedicated Raspberry Pi ($35 one-time) works well for this.
 
 ---
 

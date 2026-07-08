@@ -6,7 +6,11 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-GRANTS_GOV_URL = "https://api.grants.gov/v2/api/search"
+# GRANTS_GOV_PROXY_URL overrides the direct api.grants.gov endpoint.
+# GitHub Actions runner IPs are blocked by Grants.gov; routing through a
+# Cloudflare Worker proxy bypasses this. See docs/SOP-grant-agent.md §Grants.gov.
+_GRANTS_GOV_BASE = os.environ.get("GRANTS_GOV_PROXY_URL", "https://api.grants.gov")
+GRANTS_GOV_URL = _GRANTS_GOV_BASE.rstrip("/") + "/v2/api/search"
 SAM_GOV_URL = "https://api.sam.gov/opportunities/v2/search"
 
 # Grants.gov eligibility code 11 = Small Businesses
