@@ -64,7 +64,7 @@ Return ONLY a valid JSON array. No markdown fences, no explanation text.
 Only include results with relevance_score >= 0.5.
 If no results qualify, return an empty array: []"""
 
-BATCH_SIZE = 20
+BATCH_SIZE = 25
 
 
 def _build_system_prompt() -> str:
@@ -114,7 +114,7 @@ def _call_claude(api_key: str, batch: list[dict]) -> list[dict]:
             "content-type": "application/json",
         },
         json=payload,
-        timeout=120,
+        timeout=60,
     )
     resp.raise_for_status()
     content = _strip_fences(resp.json()["content"][0]["text"])
