@@ -21,10 +21,10 @@ GRANTS_GOV_SEARCHES = [
     {"keyword": "HUBZone small business set-aside", "eligibilities": ["11"]},
     {"keyword": "women owned small business WOSB grant", "eligibilities": ["11"]},
     {"keyword": "minority owned business development grant", "eligibilities": ["11"]},
-    {"keyword": "non-emergency medical transportation NMET grant", "eligibilities": ["11"]},
+    {"keyword": "non-emergency medical transportation NEMT grant", "eligibilities": ["11"]},
 ]
 
-# SAM.gov set-aside codes relevant to Inward2Onward
+# SAM.gov set-aside codes relevant to Jervey's Jriving
 SAM_SET_ASIDES = "WOSB,EDWOSB,HZC,8AN,SBA"
 
 

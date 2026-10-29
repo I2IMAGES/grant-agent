@@ -29,7 +29,7 @@ SEARCH_QUERIES = [
     "SAMHSA grant 2026 substance abuse transportation nonprofit apply open",
     "HHS ACF grant 2026 nonprofit social services transportation open application",
 
-    # NMET partnership targets — nonprofits receiving grants that need transportation
+    # NEMT partnership targets — nonprofits receiving grants that need transportation
     "SAMHSA NOFO 2026 substance abuse mental health grant open application",
     "HUD housing homelessness grant nonprofit 2026 open application",
     "DOL workforce development grant nonprofit 2026 open solicitation",
