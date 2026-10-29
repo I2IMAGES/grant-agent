@@ -714,6 +714,7 @@ export default {
 2. Name: `GRANTS_GOV_PROXY_URL`
 3. Value: your Worker URL (e.g. `https://grants-gov-proxy.abc123.workers.dev`)
 4. Click **Add secret**
+5. The workflow file `.github/workflows/daily_grant_run.yml` passes this secret to the agent as `GRANTS_GOV_PROXY_URL`. That line was added on 28 Oct 2026. Before then, the secret never reached the agent, even when it was set. If the secret is empty or missing, the agent calls api.grants.gov directly.
 
 ---
 
