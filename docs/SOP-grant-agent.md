@@ -1,7 +1,7 @@
-# Inward2Onward Grant Discovery Agent — SOP & Technical Documentation
+# Grant Discovery Agent for Jervey's Jriving: SOP & Technical Documentation
 
 **Version:** 2.0  
-**Last Updated:** June 19, 2026  
+**Last Updated:** October 28, 2026  
 **Owner:** Inward2Onward LLC — ai@inward2onward.com  
 **Repository:** `I2IMAGES/grant-agent`  
 **Active Branch:** `claude/vigilant-goodall-bq2jmm`
@@ -32,9 +32,11 @@
 
 ## 1. Business Context
 
-**Who:** Inward2Onward LLC, Glendale, AZ — minority-owned, women-owned small business. Qualifies for HUBZone certification.
+**Who:** Jervey's Jriving, Glendale, AZ. A minority-owned and women-owned small business, located in a HUBZone. Active SBA HUBZone certification is not confirmed; confirm it before applying as a HUBZone firm.
 
-**What:** Non-Medical Emergency Transportation (NMET) — transporting clients to medical appointments, treatment programs, social services, job training, and community resources.
+**Built and maintained by:** Inward2Onward LLC. Inward2Onward is not the applicant.
+
+**What:** Non-Emergency Medical Transportation (NEMT): transporting clients to medical appointments, treatment programs, social services, job training, and community resources.
 
 **Why this agent exists:** Grant discovery is time-consuming manual work. This agent automates daily monitoring across federal, state, local, and private funding sources and delivers a curated digest every morning at 7 AM MST.
 
@@ -42,8 +44,8 @@
 
 | Type | Description | Email Section |
 |------|-------------|---------------|
-| **Direct Grants** | Inward2Onward applies directly as a minority-owned, women-owned, or HUBZone small business | MINORITY-OWNED / WOMEN-OWNED / HUBZONE |
-| **Partnership Leads** | Grants awarded to nonprofits or agencies running programs that need client transportation — I2O subcontracts as the NMET provider | PARTNERSHIP |
+| **Direct Grants** | Jervey's Jriving applies directly as a minority-owned or women-owned small business, or as a HUBZone firm once certification is confirmed | MINORITY-OWNED / WOMEN-OWNED / HUBZONE |
+| **Partnership Leads** | Grants or funding notices for nonprofits or agencies running programs that need client transportation. Jervey's Jriving subcontracts as the NEMT provider | PARTNERSHIP |
 
 ---
 
@@ -148,7 +150,7 @@ All three arms are merged by URL before deduplication. Total raw results typical
   - Note: Uses direct HTTP (not Anthropic SDK) to avoid U+2028 UnicodeEncodeError in httpx platform-detection headers on Linux runners
 - System prompt instructs Claude to evaluate each result for:
   - TYPE 1 (Direct): minority-owned, women-owned, HUBZone direct applicant opportunities
-  - TYPE 2 (Partnership): grants to nonprofits/agencies running programs that need NMET subcontractors
+  - TYPE 2 (Partnership): grants to nonprofits/agencies running programs that need NEMT subcontractors
 - Claude returns for each qualifying result: `title`, `url`, `snippet`, `summary`, `eligibility[]`, `amount`, `deadline`, `relevance_score`
 - Only results with `relevance_score >= 0.5` are kept
 - JSON parse errors retry up to 3 times; non-parse errors fail fast
@@ -162,7 +164,7 @@ All three arms are merged by URL before deduplication. Total raw results typical
 | `MINORITY-OWNED` | Direct grant for minority-owned businesses |
 | `WOMEN-OWNED` | Direct grant for women-owned businesses |
 | `HUBZONE` | Direct grant/contract for HUBZone certified businesses |
-| `PARTNERSHIP` | Nonprofit/agency grant where I2O can subcontract NMET |
+| `PARTNERSHIP` | Nonprofit/agency grant where Jervey's Jriving can subcontract NEMT |
 
 ---
 
@@ -348,15 +350,15 @@ ORDER BY sent DESC;
 4. **MINORITY-OWNED** — Direct grants for minority-owned businesses (blue heading)
 5. **WOMEN-OWNED** — Direct grants for women-owned businesses (blue heading)
 6. **HUBZONE** — HUBZone set-asides and federal contracts (blue heading)
-7. **PARTNERSHIP** — Nonprofit/agency grants needing NMET subcontractors (purple heading)
-   - Subhead: "Grants awarded to nonprofits or agencies that may need NMET subcontractors — contact the awardee organization to offer transportation services."
+7. **PARTNERSHIP** — Nonprofit/agency grants needing NEMT subcontractors (purple heading)
+   - Subhead: "Funding for nonprofits or agencies that may need NEMT subcontractors. Find the organizations applying for or awarded it, and offer transportation services."
 8. **Footer** — Inward2Onward contact info
 
 ### Grant card contents
 - Title (linked to grant URL)
 - Amount pill (green)
 - Deadline pill (yellow)
-- Summary (2-3 sentences on fit for I2O)
+- Summary (2-3 sentences on fit for Jervey's Jriving)
 - "View Grant" button
 
 ### Fallback mode
@@ -422,12 +424,12 @@ To add a query:
 ```python
 SEARCH_QUERIES = [
     ...
-    "new search term here 2026 apply open",
+    "new search term here {year} apply open",
 ]
 ```
 
 Rules for good queries:
-- Include the year (e.g., `2026`) to get current results
+- Write the year as `{year}`. The searcher fills in the current year at run time, so queries never go stale on 1 January
 - Include action words (`apply`, `open`, `deadline`, `application open`)
 - Scope to geography where relevant (`Arizona`, `Maricopa County`, `Glendale`)
 - Include eligibility terms (`minority-owned`, `women-owned`, `HUBZone`, `WOSB`)
@@ -579,6 +581,7 @@ For a full subscriber list with unsubscribe links, consider Resend's Audiences f
 | 2026-06-18 | — | Add: PARTNERSHIP lane — new eligibility tag, purple email section, updated AI prompt |
 | 2026-06-19 | `97cc365` | Fix: deleted duplicate `main.yml` workflow (was causing double runs at 6:22 and 8:05) |
 | 2026-06-19 | `b4facba` | Fix: RSS RECENCY_DAYS 7→30; per-feed HTTP logging; 3 category Grants.gov feeds; GrantWatch; NonProfit Source added; filter date now dynamic |
+| 2026-10-28 | — | Fix: client profile corrected to Jervey's Jriving (minority-owned and women-owned, NEMT, located in a HUBZone with certification unconfirmed); Inward2Onward named as builder only. Search queries and the prior-cycle rejection rule now use the current year. Proposal removed from this public repo |
 
 ---
 
@@ -614,17 +617,17 @@ Logs print to stdout. The email will be sent to `RECIPIENT_EMAIL`.
 
 ---
 
-## Appendix B: NMET Partnership Strategy
+## Appendix B: NEMT Partnership Strategy
 
 The PARTNERSHIP lane is designed around this business logic:
 
-> Inward2Onward cannot always apply directly for every grant. But when a nonprofit, government agency, or healthcare provider receives a grant to run a client services program — substance abuse treatment, workforce development, senior services, etc. — they need transportation for their clients. That is the I2O entry point: subcontract as the NMET provider.
+> Jervey's Jriving cannot always apply directly for every grant. But when a nonprofit, government agency, or healthcare provider receives a grant to run a client services program — substance abuse treatment, workforce development, senior services, etc. — they need transportation for their clients. That is the Jervey's Jriving entry point: subcontract as the NEMT provider.
 
 **How to act on a PARTNERSHIP lead:**
-1. Read the summary in the email — it explains what program is funded and how I2O fits
+1. Read the summary in the email — it explains what program is funded and how Jervey's Jriving fits
 2. Identify the awardee organization (check USASPENDING.gov or SAM.gov awards if needed)
-3. Contact the awardee's program director to offer NMET subcontracting
-4. Lead with I2O's certifications (minority-owned, women-owned, HUBZone-eligible) — these help the awardee meet their own diversity/inclusion requirements
+3. Contact the awardee's program director to offer NEMT subcontracting
+4. Say that Jervey's Jriving is minority-owned and women-owned. Mention HUBZone status only after active SBA certification is confirmed.
 
 **Best PARTNERSHIP target program types:**
 
@@ -711,6 +714,7 @@ export default {
 2. Name: `GRANTS_GOV_PROXY_URL`
 3. Value: your Worker URL (e.g. `https://grants-gov-proxy.abc123.workers.dev`)
 4. Click **Add secret**
+5. The workflow file `.github/workflows/daily_grant_run.yml` passes this secret to the agent as `GRANTS_GOV_PROXY_URL`. That line was added on 28 Oct 2026. Before then, the secret never reached the agent, even when it was set. If the secret is empty or missing, the agent calls api.grants.gov directly.
 
 ---
 

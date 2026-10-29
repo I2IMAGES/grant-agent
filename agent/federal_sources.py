@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 # GRANTS_GOV_PROXY_URL overrides the direct api.grants.gov endpoint.
 # GitHub Actions runner IPs are blocked by Grants.gov; routing through a
 # Cloudflare Worker proxy bypasses this. See docs/SOP-grant-agent.md §Grants.gov.
-_GRANTS_GOV_BASE = os.environ.get("GRANTS_GOV_PROXY_URL", "https://api.grants.gov")
+_GRANTS_GOV_BASE = os.environ.get("GRANTS_GOV_PROXY_URL") or "https://api.grants.gov"
 GRANTS_GOV_URL = _GRANTS_GOV_BASE.rstrip("/") + "/v2/api/search"
 SAM_GOV_URL = "https://api.sam.gov/opportunities/v2/search"
 
@@ -21,10 +21,10 @@ GRANTS_GOV_SEARCHES = [
     {"keyword": "HUBZone small business set-aside", "eligibilities": ["11"]},
     {"keyword": "women owned small business WOSB grant", "eligibilities": ["11"]},
     {"keyword": "minority owned business development grant", "eligibilities": ["11"]},
-    {"keyword": "non-emergency medical transportation NMET grant", "eligibilities": ["11"]},
+    {"keyword": "non-emergency medical transportation NEMT grant", "eligibilities": ["11"]},
 ]
 
-# SAM.gov set-aside codes relevant to Inward2Onward
+# SAM.gov set-aside codes relevant to Jervey's Jriving
 SAM_SET_ASIDES = "WOSB,EDWOSB,HZC,8AN,SBA"
 
 

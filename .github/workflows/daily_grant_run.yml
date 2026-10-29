@@ -35,4 +35,5 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          GRANTS_GOV_PROXY_URL: ${{ secrets.GRANTS_GOV_PROXY_URL }}
         run: python grant_agent.py

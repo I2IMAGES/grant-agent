@@ -1,6 +1,6 @@
-# Inward2Onward Grant Discovery Agent
+# Grant Discovery Agent for Jervey's Jriving
 
-Automated daily agent that discovers grant opportunities for minority-owned, women-owned, and HUBZone-eligible small businesses. Runs searches via Serper, filters results with Claude AI, deduplicates via Supabase, and delivers a branded HTML digest via Resend.
+Automated daily agent that discovers grant opportunities for Jervey's Jriving, a minority-owned and women-owned NEMT business in Glendale, AZ. Built and maintained by Inward2Onward LLC. Runs searches via Serper, filters results with Claude AI, deduplicates via Supabase, and delivers a branded HTML digest via Resend.
 
 ## Architecture
 
