@@ -24,7 +24,7 @@ Grants, contracts, or set-asides where Jervey's Jriving itself is an eligible ap
 Tag with one or more of: MINORITY-OWNED, WOMEN-OWNED, HUBZONE
 
 TYPE 2 - PARTNERSHIP LEADS (Jervey's Jriving subcontracts):
-Grants awarded to nonprofits, public agencies, tribal organizations, or healthcare providers
+Grants or funding notices for nonprofits, public agencies, tribal organizations, or healthcare providers
 to run programs that would require transportation for their clients. Examples:
 - Substance abuse or mental health treatment programs
 - Youth services, foster care, or family support programs

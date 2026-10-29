@@ -45,7 +45,7 @@
 | Type | Description | Email Section |
 |------|-------------|---------------|
 | **Direct Grants** | Jervey's Jriving applies directly as a minority-owned or women-owned small business, or as a HUBZone firm once certification is confirmed | MINORITY-OWNED / WOMEN-OWNED / HUBZONE |
-| **Partnership Leads** | Grants awarded to nonprofits or agencies running programs that need client transportation . Jervey's Jriving subcontracts as the NEMT provider | PARTNERSHIP |
+| **Partnership Leads** | Grants or funding notices for nonprofits or agencies running programs that need client transportation. Jervey's Jriving subcontracts as the NEMT provider | PARTNERSHIP |
 
 ---
 
@@ -351,7 +351,7 @@ ORDER BY sent DESC;
 5. **WOMEN-OWNED** — Direct grants for women-owned businesses (blue heading)
 6. **HUBZONE** — HUBZone set-asides and federal contracts (blue heading)
 7. **PARTNERSHIP** — Nonprofit/agency grants needing NEMT subcontractors (purple heading)
-   - Subhead: "Grants awarded to nonprofits or agencies that may need NEMT subcontractors: contact the awardee organization to offer transportation services."
+   - Subhead: "Funding for nonprofits or agencies that may need NEMT subcontractors. Find the organizations applying for or awarded it, and offer transportation services."
 8. **Footer** — Inward2Onward contact info
 
 ### Grant card contents
