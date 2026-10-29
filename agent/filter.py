@@ -37,7 +37,7 @@ Tag these with: PARTNERSHIP
 
 HARD REJECT (exclude entirely, relevance_score 0):
 - Deadline has already passed (before {today})
-- The grant cycle shown is from a prior year (2025 or earlier) — e.g. "2025 application", "FY2025 awards", "2024 recipients"
+- The grant cycle shown is from a prior year ({prior_year} or earlier), e.g. "{prior_year} application", "FY{prior_year} awards", "{two_years_ago} recipients"
 - Award announcements, past winners lists, or "grant awarded to" news — these are done deals
 - Pure news articles or press recaps with no actionable open application link
 - General program overview pages ("about our grants", "grant history") with no current open application
@@ -69,8 +69,11 @@ BATCH_SIZE = 25
 
 def _build_system_prompt() -> str:
     from datetime import date
-    today = date.today().strftime("%B %d, %Y")
-    return _SYSTEM_PROMPT_TEMPLATE.format(today=today)
+    now = date.today()
+    today = now.strftime("%B %d, %Y")
+    return _SYSTEM_PROMPT_TEMPLATE.format(
+        today=today, prior_year=now.year - 1, two_years_ago=now.year - 2
+    )
 MAX_FIELD_CHARS = 500
 
 

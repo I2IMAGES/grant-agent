@@ -8,7 +8,7 @@
 
 ## What Was Built
 
-A fully automated Python pipeline that runs daily on GitHub Actions to find, filter, and deliver grant opportunities to Inward2Onward LLC — a minority-owned, women-owned, HUBZone-eligible small business in Glendale, AZ.
+A fully automated Python pipeline that runs daily on GitHub Actions to find, filter, and deliver grant opportunities for Jervey's Jriving, a minority-owned and women-owned small business in Glendale, AZ, located in a HUBZone. Inward2Onward LLC built the agent.
 
 **Stack:**
 - Search: Serper API (Google Search)
